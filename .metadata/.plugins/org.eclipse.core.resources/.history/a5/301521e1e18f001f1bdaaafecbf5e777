@@ -1,0 +1,49 @@
+package pe.com.bn.app.view.controller;
+
+import java.io.Serializable;
+import javax.annotation.PostConstruct;
+import javax.faces.bean.ViewScoped;
+import javax.inject.Inject;
+import javax.inject.Named;
+import org.apache.log4j.Logger;
+import pe.com.bn.app.services.WsFacade;
+import pe.com.bn.app.view.model.TarjetaModel;
+
+@Named
+@ViewScoped
+public class TarjetaController implements Serializable{
+    private static final long serialVersionUID = 1L;
+    
+    @Inject
+    private WsFacade facade;
+    private TarjetaModel tarjetaModel;
+    
+    private final static Logger log = Logger.getLogger(TarjetaController.class);
+
+    @PostConstruct
+    public void init(){
+        tarjetaModel = new TarjetaModel();
+        log.info("TarjetaController inicializado. TarjetaModel creado.");
+    }
+
+    // Método para consultar los datos de la tarjeta
+    public void consultarDatosTarjeta() {
+        try {
+            String numeroTarjeta = tarjetaModel.getNumTarjeta();
+            log.info("Consultando datos de tarjeta. Número de tarjeta enviado: " + numeroTarjeta);
+            tarjetaModel.setTarjetaDatos(facade.informacionDeTarjeta(numeroTarjeta));
+            log.info("Datos de tarjeta recibidos: " + tarjetaModel.getTarjetaDatos());
+        } catch (Exception e) {
+            log.error("Error al consultar los datos de la tarjeta: ", e);
+        }
+    }
+    
+    
+    public TarjetaModel getTarjetaModel() {
+        return tarjetaModel;
+    }
+
+    public void setTarjetaModel(TarjetaModel tarjetaModel) {
+        this.tarjetaModel = tarjetaModel;
+    }
+}

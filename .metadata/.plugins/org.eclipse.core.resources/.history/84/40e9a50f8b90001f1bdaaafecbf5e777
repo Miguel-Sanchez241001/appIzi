@@ -1,0 +1,31 @@
+<ui:composition template="/plantilla/layout.xhtml"
+                xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:p="http://primefaces.org/ui"
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:define name="content">
+        <h1>Información Detallada desde el ManagedBean</h1>
+
+        <h:outputText value="Mensaje: #{welcomeView.message}" /><br/>
+        <h:outputText value="IP del Cliente: #{welcomeView.clientIP}" /><br/>
+        <h:outputText value="IP del Servidor: #{welcomeView.serverIP}" /><br/>
+        <h:outputText value="Número global de visitas a esta página: #{welcomeView.globalVisitCount}" /><br/>
+        <h:outputText value="Navegador del Cliente: #{welcomeView.clientBrowser}" /><br/>
+        <h:outputText value="Sistema Operativo del Cliente: #{welcomeView.clientOS}" /><br/>
+        <h:outputText value="Hora actual del servidor: #{welcomeView.serverTime}" /><br/>
+        <h:outputText value="URL solicitada: #{welcomeView.requestedURL}" /><br/>
+        <h:outputText value="Protocolo de la solicitud: #{welcomeView.requestProtocol}" /><br/>
+        <h:outputText value="Método de la solicitud: #{welcomeView.requestMethod}" /><br/>
+        <h:outputText value="Idioma preferido del cliente: #{welcomeView.clientPreferredLanguage}" /><br/>
+        <h:outputText value="Nombre del Servidor: #{welcomeView.serverName}" /><br/>
+        <h:outputText value="Puerto del Servidor: #{welcomeView.serverPort}" /><br/>
+        <h:outputText value="Ruta referida: #{welcomeView.referer}" /><br/>
+         <h:outputText value="Duración de la Sesión (en minutos): #{welcomeView.sessionDuration}" /><br/>
+      <h:form>
+            <p:commandButton value="Ir a Consulta de Tarjeta" action="tarjetaInfo.xhtml?faces-redirect=true" />
+        </h:form>
+   </ui:define>
+
+</ui:composition>

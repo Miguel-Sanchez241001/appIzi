@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:f="http://java.sun.com/jsf/core"
+	template="/plantilla/plantilla.xhtml">
+
+
+	<ui:define name="metadata">
+	</ui:define>
+	<ui:define name="content">
+
+		<h2>CONSULTAR CLIENTE</h2>
+
+		<h:form id="formConsultarCliente">
+
+			<center>
+				<p:panel style="margin:30px 80px 30px 80px;padding:20px;">
+
+					<h:panelGrid style="width:90%;" columns="1">
+						<p:panelGrid columns="4" id="pgBusqueda"
+							style="margin:20px auto 20px auto;" layout="grid">
+							<h:outputText value="Consultar por" />
+							<p:selectOneMenu id="somTipoBusqueda"
+								widgetVar="selectTipoBusqueda" onchange="onCall(this)"
+								style="width:162px;vertical-align:middle;margin-left:20px;"
+								value="#{consultarClienteController.consultarClienteModel.tipoBusqueda}"
+								required="true" requiredMessage="Seleccione tipo de documento">
+								<p:ajax event="change" update="formConsultarCliente:pgBusqueda" />
+								<f:selectItems
+									value="#{consultarClienteController.consultarClienteModel.listaTipoBusqueda}"
+									var="item" itemLabel="#{item.descripcion}"
+									itemValue="#{item.id}" />
+							</p:selectOneMenu>
+							<p:inputText style="margin-left:20px;" id="numDocumento"
+								required="true"
+								onkeypress="javascript:return jsValidarKey(event,/[0-9]/);"
+								value="#{consultarClienteController.consultarClienteModel.numDocumento}"
+								maxlength="#{consultarClienteController.consultarClienteModel.obtenerBusquedaLength()}"
+								requiredMessage="#{consultarClienteController.consultarClienteModel.obtenerBusquedaRequiredMessage()}"
+								validatorMessage="#{consultarClienteController.consultarClienteModel.obtenerBusquedaValidatorMessage()}">
+								<f:validateLength
+									minimum="#{consultarClienteController.consultarClienteModel.obtenerBusquedaLength()}" />
+							</p:inputText>
+
+							<p:commandButton id="buscarCliente" value="Buscar"
+								styleClass="btnGrande"
+								process="@this somTipoBusqueda,numDocumento"
+								onstart="PF('statusDialog').show()"
+								oncomplete="PF('statusDialog').hide()" />
+
+							<!-- 	actionListener="#{consultarClienteController.buscarAsignaciones()}"
+							update="formConsultarCliente:pgResultado" -->
+
+						</p:panelGrid>
+						<div class="dashed"></div>
+					</h:panelGrid>
+
+
+
+				</p:panel>
+			</center>
+
+		</h:form>
+
+
+
+
+	</ui:define>
+</ui:composition>

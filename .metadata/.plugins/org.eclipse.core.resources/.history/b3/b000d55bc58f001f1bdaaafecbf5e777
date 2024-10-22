@@ -1,0 +1,165 @@
+package pe.com.bn.app.services;
+
+import javax.enterprise.context.ApplicationScoped;
+
+import pe.com.bn.app.dto.Cliente;
+import pe.com.bn.app.dto.Cuenta;
+import pe.com.bn.app.dto.Movimiento;
+import pe.com.bn.app.dto.Tarjeta;
+
+import java.util.List;
+
+@ApplicationScoped
+public class WsFacade {
+
+    // Método para consultar información de un cliente por su ID
+    public Cliente consultarCliente(String clienteId) {
+        Cliente cliente = new Cliente();
+        cliente.setId(clienteId);
+        cliente.setNombre("Juan Pérez");
+        cliente.setEmail("juan.perez@example.com");
+
+        return cliente;
+    }
+
+    // Método para consultar movimientos de cuenta
+    public List<Movimiento> consultarMovimientosCuenta(String cuentaId) {
+        Movimiento mov1 = new Movimiento("2024-10-20", "Depósito", 1500.00);
+        Movimiento mov2 = new Movimiento("2024-10-18", "Retiro", -200.00);
+        
+        return List.of(mov1, mov2);
+    }
+    
+	public DTOConsultaMovimientosExpediente consultaMovimientoPorExpediente(
+			String numCuenta,
+			String tipoMoneda, 
+			Date fechaExpiracion) throws InternalExcepcion {
+				
+		String wsdlUrl = parametros.getWsSoapMc();		
+		String wsdlAS = parametros.getPrefijoNumReferenciaMc();
+		
+		String codEmisor = parametros.getCodigoEmisorMc();	
+		String codUsuario = parametros.getCodigoUsuarioMc();	
+		String numTerminal = parametros.getNumTerminalMc();	
+		String comercio = parametros.getWsComercioMc();	
+		String numReferenciaWS = wsdlAS+NumeroALetras.llenarCerosAlaIzquierda(Long.toString(parametroMapper.obtenerNumeroReferenciaWS()),10);
+		
+		String usuario = parametros.getWsUsuarioMc();
+		String clave = parametros.getWsClaveMc();		
+		
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMdd");
+	    String fechaTerminal = sdf.format(new Date());
+	    System.out.println("fechaTerminal:"+fechaTerminal);
+	        
+	    DateFormat dateFormat = new SimpleDateFormat("HHmmss");
+	    String horaTerminal = dateFormat.format(new Date());	       
+	    System.out.println("horaTerminal:"+horaTerminal);	
+		
+	    /*fecha de expiacion*/
+	    SimpleDateFormat sdfanio = new SimpleDateFormat("yyyy");
+	    String fchExpanio =  sdfanio.format(fechaExpiracion).substring(2,4);
+	    
+	    SimpleDateFormat sdfmes = new SimpleDateFormat("MM");
+	    String fchExpmes = sdfmes.format(fechaExpiracion);
+	    
+	    String fchExp = fchExpanio + fchExpmes;
+	    
+	    String numeroCuenta = StringsUtils.quitarCeroIzquierdaString(numCuenta);
+		  
+	    
+		DTOwservice dto = new DTOwservice(ConstantesWS.SOACTION_CONSULTA_MOVIMIENTOS_EXPEDIENTE);
+		Class<DTOConsultaMovimientosExpediente> dtoClass = DTOConsultaMovimientosExpediente.class;
+		DTOConsultaMovimientosExpediente responseDTO = null;
+
+
+		Map<String, String> consultaMovimientosExpedienteMap = ConstantesWS
+				.getConsultaMovimientosExpedienteMap();
+				
+		consultaMovimientosExpedienteMap.put(ConstantesWS.COD_EMISOR, codEmisor);
+		consultaMovimientosExpedienteMap.put(ConstantesWS.COD_USUARIO, codUsuario);
+		consultaMovimientosExpedienteMap.put(ConstantesWS.NUM_TERMINAL, numTerminal);
+		consultaMovimientosExpedienteMap.put(ConstantesWS.NUM_REFERENCIA, numReferenciaWS);		
+		consultaMovimientosExpedienteMap.put(ConstantesWS.NUM_CUENTA, numeroCuenta);		
+		consultaMovimientosExpedienteMap.put(ConstantesWS.FECHA_EXPIRACION, fchExp);
+		consultaMovimientosExpedienteMap.put(ConstantesWS.COMERCIO, comercio);
+		consultaMovimientosExpedienteMap.put(ConstantesWS.MONEDA, tipoMoneda);
+		consultaMovimientosExpedienteMap.put(ConstantesWS.FECHA_TXN_TERMINAL, fechaTerminal);
+		consultaMovimientosExpedienteMap.put(ConstantesWS.HORA_TXN_TERMINAL, horaTerminal);
+		consultaMovimientosExpedienteMap.put(ConstantesWS.WS_USUARIO, usuario);
+		consultaMovimientosExpedienteMap.put(ConstantesWS.WS_CLAVE, clave);
+		consultaMovimientosExpedienteMap.put(ConstantesWS.RESERVADO, "");
+		
+		String soapRequestPrevie = ConstantesWS.generarXml(
+				ConstantesWS.CONSULTA_MOVIMIENTOS_EXPEDIENTE_XML, consultaMovimientosExpedienteMap);
+		
+
+		String soapRequest = dto.getSoapTemplate().replace("SOAP_CONTENT", soapRequestPrevie);
+
+		//logger.info("Request generado: " + soapRequest);
+
+		int maxRetries = 5;
+		int attempt = 0;
+		boolean success = false;
+
+		while (attempt < maxRetries && !success) {
+			attempt++;
+			String dataWS = "";
+			try {
+				dataWS = SoapClientUtil.sendSoapRequest(wsdlUrl,
+						dto.getSoapAction(),
+						soapRequest);
+			} catch (ExternalServiceMCProcesosException e) {
+				throw e;
+			}
+
+			try {
+
+				logger.info("Respuesta del servidor:");
+				logger.info(dataWS);
+
+				Document documentoXML = SoapClientUtil.parseXmlResponse(dataWS
+						.toString());
+				String resultado = SoapClientUtil.getTextFromElement(
+						documentoXML, dto.getResultTag());
+
+				String contenidoXML = resultado.substring(
+						resultado.indexOf(dto.getStartTag()),
+						resultado.indexOf(dto.getEndTag())
+								+ dto.getEndTag().length());
+
+				responseDTO = SoapClientUtil.convertirXMLAObjeto(
+						new StringReader(contenidoXML),
+						dtoClass);
+
+				logger.info("Objeto de respuesta: " + responseDTO);
+				success = true;
+				logger.info("Conexión exitosa en el intento " + attempt);
+			} catch (InternalExcepcion e) {
+				throw e;
+			}
+
+		}
+				
+		return responseDTO;
+	}
+    // Nuevo método para consultar información de una cuenta por su ID
+    public Cuenta consultarCuenta(String cuentaId) {
+        Cuenta cuenta = new Cuenta();
+        cuenta.setId(cuentaId);
+        cuenta.setNumero("1234567890");
+        cuenta.setTipo("Ahorros");
+        cuenta.setSaldo(2500.00);
+
+        return cuenta;
+    }
+
+    // Método para consultar información de una tarjeta por su ID
+    public Tarjeta consultarTarjeta(String tarjetaId) {
+        Tarjeta tarjeta = new Tarjeta();
+        tarjeta.setId(tarjetaId);
+        tarjeta.setNumero("1234-5678-9012-3456");
+        tarjeta.setSaldoDisponible(5000.00);
+
+        return tarjeta;
+    }
+}

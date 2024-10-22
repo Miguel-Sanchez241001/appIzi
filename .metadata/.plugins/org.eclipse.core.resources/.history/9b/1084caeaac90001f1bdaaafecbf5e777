@@ -1,0 +1,28 @@
+package pe.com.bn.app.view.model;
+
+import java.io.Serializable;
+
+import pe.com.bn.app.dto.ws.DTOConsultaDatosTarjeta;
+
+public class TarjetaModel implements Serializable {
+    private static final long serialVersionUID = 1L;
+	private String numTarjeta;
+	private DTOConsultaDatosTarjeta tarjetaDatos;
+	public TarjetaModel(){
+		this.numTarjeta = "" ;
+	}
+	
+	public String getNumTarjeta() {
+		return numTarjeta;
+	}
+	public void setNumTarjeta(String numTarjeta) {
+		this.numTarjeta = numTarjeta;
+	}
+	public DTOConsultaDatosTarjeta getTarjetaDatos() {
+		return tarjetaDatos;
+	}
+	public void setTarjetaDatos(DTOConsultaDatosTarjeta tarjetaDatos) {
+		this.tarjetaDatos = tarjetaDatos;
+	}
+
+}

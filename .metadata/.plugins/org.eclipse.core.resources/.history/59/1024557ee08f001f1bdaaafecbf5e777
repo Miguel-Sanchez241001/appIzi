@@ -1,0 +1,57 @@
+package pe.com.bn.app.view.controller;
+
+import java.io.Serializable;
+
+import javax.annotation.PostConstruct;
+import javax.faces.bean.ManagedBean;
+import javax.faces.bean.ViewScoped;
+import javax.inject.Inject;
+import javax.inject.Named;
+
+import org.apache.log4j.Logger;
+
+import pe.com.bn.app.dto.ws.DTOConsultaDatosTarjeta;
+import pe.com.bn.app.services.WsFacade;
+import pe.com.bn.app.tranversal.util.CertificadoUtil;
+import pe.com.bn.app.view.model.TarjetaModel;
+
+@Named
+@ViewScoped
+public class TarjetaController implements Serializable{
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	@Inject
+	public WsFacade facade;
+	private TarjetaModel tarjetaModel;
+      
+	private final static Logger log = Logger.getLogger(TarjetaController.class);
+
+    @PostConstruct
+    public void init(){
+    	tarjetaModel = new TarjetaModel();
+    }
+    
+    // Método para consultar los datos de la tarjeta
+    public void consultarDatosTarjeta() {
+        try {
+        	tarjetaModel.setTarjetaDatos( facade.informacionDeTarjeta(tarjetaModel.getNumTarjeta()));
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+    
+	public TarjetaModel getTarjetaModel() {
+		return tarjetaModel;
+	}
+	public void setTarjetaModel(TarjetaModel tarjetaModel) {
+		this.tarjetaModel = tarjetaModel;
+	}
+
+
+
+
+
+ 
+}

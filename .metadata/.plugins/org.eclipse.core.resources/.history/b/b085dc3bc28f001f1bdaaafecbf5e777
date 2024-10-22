@@ -1,0 +1,5 @@
+package pe.com.bn.app.tranversal.exceptions;
+
+public class InternalExcepcion extends Exception {
+
+}

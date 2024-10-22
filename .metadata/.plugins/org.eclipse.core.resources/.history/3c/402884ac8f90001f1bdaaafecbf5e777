@@ -1,0 +1,19 @@
+<!-- header.xhtml -->
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns:f="http://xmlns.jcp.org/jsf/core"
+                xmlns:p="http://primefaces.org/ui">
+
+    <!-- Encabezado principal -->
+    <div class="header">
+        <div class="header-left">
+            <h1>Sistema de Consulta de Datos Izipay</h1>
+        </div>
+        <div class="header-right">
+            <!-- Mostrar la fecha y hora actual -->
+            <h:outputText id="currentTime" value="#{headerController.currentDateTime}" styleClass="current-time" />
+        </div>
+    </div>
+ 
+</ui:composition>

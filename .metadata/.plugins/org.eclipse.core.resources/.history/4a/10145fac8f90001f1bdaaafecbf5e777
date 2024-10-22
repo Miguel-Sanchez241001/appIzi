@@ -1,0 +1,77 @@
+<ui:composition template="/plantilla/layout.xhtml"
+                xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:p="http://primefaces.org/ui"
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:define name="content">
+    
+        <h1>Consulta de Tarjeta</h1>
+        
+<h:form id="consultaForm">
+          <p:panelGrid columns="2">
+        <h:outputLabel for="numTarjeta" value="Número de Tarjeta:" />
+<p:inputText id="numTarjeta" value="#{tarjetaController.tarjetaModel.numTarjeta}" />
+<p:commandButton id="consultarButton" value="Consultar"
+                 action="#{tarjetaController.consultarDatosTarjeta}"
+                 update=":consultaForm:panelResultado :consultaForm:growl"
+                 onstart="PF('statusDialog').show();"
+                 oncomplete="PF('statusDialog').hide();" />
+    </p:panelGrid>
+
+        <p:panelGrid id="panelResultado" columns="2"
+rendered="true"
+         >
+            <h:outputText value="Código Emisor:" />
+            <h:outputText value="#{tarjetaController.tarjetaModel.tarjetaDatos.codEmisor}" />
+            
+            <h:outputText value="Código Usuario:" />
+            <h:outputText value="#{tarjetaController.tarjetaModel.tarjetaDatos.codUsuario}" />
+            
+            <h:outputText value="Número Terminal:" />
+            <h:outputText value="#{tarjetaController.tarjetaModel.tarjetaDatos.numTerminal}" />
+            
+            <h:outputText value="Número de Tarjeta:" />
+            <h:outputText value="#{tarjetaController.tarjetaModel.tarjetaDatos.numTarjeta}" />
+            
+            <h:outputText value="Fecha Expiración:" />
+            <h:outputText value="#{tarjetaController.tarjetaModel.tarjetaDatos.fechaExpiracion}" />
+            
+            <h:outputText value="Comercio:" />
+            <h:outputText value="#{tarjetaController.tarjetaModel.tarjetaDatos.comercio}" />
+             <h:outputText value="Bloqueo" />
+            <h:outputText value="#{tarjetaController.tarjetaModel.tarjetaDatos.codigoBloqueo}" />
+            
+            <h:outputText value="Fecha Txn Terminal:" />
+            <h:outputText value="#{tarjetaController.tarjetaModel.tarjetaDatos.fechaTxnTerminal}" />
+            
+            <h:outputText value="Hora Txn Terminal:" />
+            <h:outputText value="#{tarjetaController.tarjetaModel.tarjetaDatos.horaTxnTerminal}" />
+            
+            <h:outputText value="Código Respuesta:" />
+            <h:outputText value="#{tarjetaController.tarjetaModel.tarjetaDatos.codRespuesta}" />
+            
+            <h:outputText value="Descripción Respuesta:" />
+            <h:outputText value="#{tarjetaController.tarjetaModel.tarjetaDatos.descRespuesta}" />
+        </p:panelGrid>
+        
+                <p:dialog id="statusDialog" widgetVar="statusDialog" modal="true" closable="false"
+          draggable="false" resizable="false" showHeader="false" width="200">
+    <p:outputPanel style="text-align:center;">
+        <h:outputText value="Cargando..." style="font-size:16px;" />
+        <!-- Puedes añadir una imagen de carga si lo deseas -->
+        <!-- <p:graphicImage name="images/loading.gif" /> -->
+    </p:outputPanel>
+</p:dialog>
+
+    <p:growl id="growl" showDetail="true" life="5000" />
+
+        </h:form>
+        
+        
+        
+
+   </ui:define>
+
+</ui:composition>

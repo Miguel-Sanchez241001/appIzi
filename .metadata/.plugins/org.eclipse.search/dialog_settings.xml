@@ -1,0 +1,203 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<section name="Workbench">
+	<section name="">
+		<item value="1000" key="org.eclipse.search.resultpage.limit"/>
+	</section>
+	<section name="DialogBounds_SearchDialog">
+		<item value="602" key="DIALOG_WIDTH"/>
+		<item value="72" key="DIALOG_Y_ORIGIN"/>
+		<item value="451" key="DIALOG_HEIGHT"/>
+		<item value="390" key="DIALOG_X_ORIGIN"/>
+		<item value="1|Segoe UI|9.0|0|WINDOWS|1|-12|0|0|0|400|0|0|0|1|0|0|0|0|Segoe UI" key="DIALOG_FONT_NAME"/>
+	</section>
+	<section name="Search">
+		<list key="Search.processedPageIds">
+			<item value="com.ibm.datatools.project.ui.search.DatatoolsSearchPage"/>
+			<item value="org.eclipse.search.internal.ui.text.TextSearchPage"/>
+			<item value="org.eclipse.egit.ui.commitSearchPage"/>
+			<item value="org.eclipse.jdt.ui.JavaSearchPage"/>
+			<item value="org.eclipse.wst.jsdt.ui.JavaSearchPage"/>
+			<item value="com.ibm.xtools.rmp.ui.search.internal.dialogs.RMPSearchPage"/>
+			<item value="org.eclipse.pde.internal.ui.search.SearchPage"/>
+			<item value="org.eclipse.hyades.test.ui.search.TestLogSearchPage"/>
+		</list>
+		<list key="Search.enabledPageIds">
+			<item value="com.ibm.datatools.project.ui.search.DatatoolsSearchPage"/>
+			<item value="org.eclipse.search.internal.ui.text.TextSearchPage"/>
+			<item value="org.eclipse.egit.ui.commitSearchPage"/>
+			<item value="org.eclipse.jdt.ui.JavaSearchPage"/>
+			<item value="org.eclipse.wst.jsdt.ui.JavaSearchPage"/>
+			<item value="com.ibm.xtools.rmp.ui.search.internal.dialogs.RMPSearchPage"/>
+			<item value="org.eclipse.pde.internal.ui.search.SearchPage"/>
+			<item value="org.eclipse.hyades.test.ui.search.TestLogSearchPage"/>
+		</list>
+	</section>
+	<section name="org.eclipse.search.text.FileSearchResultPage">
+		<item value="1000" key="org.eclipse.search.resultpage.limit"/>
+	</section>
+	<section name="TextSearchPage">
+		<item value="false" key="CASE_SENSITIVE"/>
+		<item value="false" key="REG_EX_SEARCH"/>
+		<item value="false" key="SEARCH_DERIVED"/>
+		<item value="1" key="HISTORY_SIZE"/>
+		<section name="EXTENSIONS">
+			<item value="*.analysis, *.ant, *.artifact, *.bp, *.class, *.class without source, *.cld, *.cmof, *.coveragedata, *.css, *.datagraph, *.datapool, *.dbg, *.dbm, *.dbmp, *.ddl, *.ddm, *.default binary, *.default text, *.deploy, *.dnx, *.doc, *.docx, *.dtd, *.e4xmi, *.ecore, *.ecore2ecore, *.ecore2xml, *.ecore_diagram, *.ecx, *.efx, *.eimperativeocl, *.emof, *.emx, *.ent, *.epx, *.execution, *.executiondb, *.exsd, *.genmodel, *.gmfgen, *.gmfgraph, *.gmfmap, *.gmftool, *.htm, *.html, *.html-ss, *.htpl, *.iex, *.ifx, *.inx, *.jar, *.jardesc, *.jarxmi, *.java, *.javaspsql, *.jhtml, *.jpage, *.js, *.jsf, *.jsml, *.json, *.jsp, *.jspf, *.jspx, *.jsv, *.jsw, *.jtpl, *.jy, *.ldm, *.lmf, *.location, *.log, *.macrodef, *.mapping, *.mapxmi, *.mod, *.ndm, *.oclecore, *.ocluml, *.oclxmi, *.perfxml, *.pkgsql, *.pkgxmi, *.plspsql, *.pludfsql, *.prefs, *.probe, *.product, *.properties, *.py, *.qvto, *.qvtotrace, *.rptdesign, *.rptdocument, *.rptlibrary, *.rpttemplate, *.rxml, *.sdo-connections, *.server, *.shtm, *.shtml, *.spsql, *.spxmi, *.sql, *.sqlj, *.sqlpage, *.tag, *.tagf, *.tagx, *.tagxf, *.target, *.tc, *.testsuite, *.tld, *.tma, *.tpx, *.trcaxmi, *.trcmxmi, *.trcnxmi, *.trcpxmi, *.txt, *.udfsql, *.udfxmi, *.uml, *.uml2, *.wdo-connections, *.wml, *.wsdd, *.wsdl, *.wsil, *.wsimsg, *.xht, *.xhtm, *.xhtml, *.xmi, *.xml, *.xpt, *.xsd, *.xsd2ecore, *.xsl, *.xslt, *.zip" key="0"/>
+		</section>
+		<section name="HISTORY0">
+			<item value="false" key="isRegExSearch"/>
+			<item value="592448L2561" key="textPattern"/>
+			<item value="0" key="scope"/>
+			<item value="true" key="ignoreCase"/>
+			<list key="fileNamePatterns">
+				<item value="*.class without source"/>
+				<item value="*.efx"/>
+				<item value="*.dnx"/>
+				<item value="*.jy"/>
+				<item value="*.ent"/>
+				<item value="*.eimperativeocl"/>
+				<item value="*.html-ss"/>
+				<item value="*.shtml"/>
+				<item value="*.ocluml"/>
+				<item value="*.xsl"/>
+				<item value="*.tc"/>
+				<item value="*.ecore"/>
+				<item value="*.gmfgraph"/>
+				<item value="*.tagxf"/>
+				<item value="*.tld"/>
+				<item value="*.bp"/>
+				<item value="*.xsd"/>
+				<item value="*.doc"/>
+				<item value="*.js"/>
+				<item value="*.qvtotrace"/>
+				<item value="*.pludfsql"/>
+				<item value="*.location"/>
+				<item value="*.perfxml"/>
+				<item value="*.jsp"/>
+				<item value="*.rptdesign"/>
+				<item value="*.wdo-connections"/>
+				<item value="*.jsv"/>
+				<item value="*.rptlibrary"/>
+				<item value="*.jsw"/>
+				<item value="*.emx"/>
+				<item value="*.xsd2ecore"/>
+				<item value="*.dbmp"/>
+				<item value="*.default binary"/>
+				<item value="*.javaspsql"/>
+				<item value="*.wsimsg"/>
+				<item value="*.trcpxmi"/>
+				<item value="*.mod"/>
+				<item value="*.properties"/>
+				<item value="*.mapping"/>
+				<item value="*.inx"/>
+				<item value="*.sql"/>
+				<item value="*.jpage"/>
+				<item value="*.epx"/>
+				<item value="*.dtd"/>
+				<item value="*.ddl"/>
+				<item value="*.ddm"/>
+				<item value="*.xhtm"/>
+				<item value="*.plspsql"/>
+				<item value="*.html"/>
+				<item value="*.htm"/>
+				<item value="*.exsd"/>
+				<item value="*.xml"/>
+				<item value="*.ifx"/>
+				<item value="*.xmi"/>
+				<item value="*.shtm"/>
+				<item value="*.log"/>
+				<item value="*.analysis"/>
+				<item value="*.ecore_diagram"/>
+				<item value="*.trcaxmi"/>
+				<item value="*.xhtml"/>
+				<item value="*.jar"/>
+				<item value="*.pkgxmi"/>
+				<item value="*.probe"/>
+				<item value="*.jarxmi"/>
+				<item value="*.rxml"/>
+				<item value="*.dbm"/>
+				<item value="*.iex"/>
+				<item value="*.udfsql"/>
+				<item value="*.tma"/>
+				<item value="*.server"/>
+				<item value="*.dbg"/>
+				<item value="*.sqlj"/>
+				<item value="*.oclxmi"/>
+				<item value="*.prefs"/>
+				<item value="*.wsdl"/>
+				<item value="*.testsuite"/>
+				<item value="*.tag"/>
+				<item value="*.wsil"/>
+				<item value="*.tpx"/>
+				<item value="*.cmof"/>
+				<item value="*.wsdd"/>
+				<item value="*.execution"/>
+				<item value="*.lmf"/>
+				<item value="*.ecore2ecore"/>
+				<item value="*.tagf"/>
+				<item value="*.qvto"/>
+				<item value="*.ecx"/>
+				<item value="*.jhtml"/>
+				<item value="*.sqlpage"/>
+				<item value="*.gmfmap"/>
+				<item value="*.datagraph"/>
+				<item value="*.tagx"/>
+				<item value="*.gmfgen"/>
+				<item value="*.emof"/>
+				<item value="*.deploy"/>
+				<item value="*.jspx"/>
+				<item value="*.artifact"/>
+				<item value="*.txt"/>
+				<item value="*.class"/>
+				<item value="*.jspf"/>
+				<item value="*.spxmi"/>
+				<item value="*.gmftool"/>
+				<item value="*.coveragedata"/>
+				<item value="*.jtpl"/>
+				<item value="*.zip"/>
+				<item value="*.css"/>
+				<item value="*.xht"/>
+				<item value="*.xpt"/>
+				<item value="*.genmodel"/>
+				<item value="*.product"/>
+				<item value="*.trcnxmi"/>
+				<item value="*.xslt"/>
+				<item value="*.ecore2xml"/>
+				<item value="*.sdo-connections"/>
+				<item value="*.executiondb"/>
+				<item value="*.e4xmi"/>
+				<item value="*.ant"/>
+				<item value="*.rpttemplate"/>
+				<item value="*.jsf"/>
+				<item value="*.mapxmi"/>
+				<item value="*.json"/>
+				<item value="*.udfxmi"/>
+				<item value="*.jsml"/>
+				<item value="*.ndm"/>
+				<item value="*.rptdocument"/>
+				<item value="*.macrodef"/>
+				<item value="*.wml"/>
+				<item value="*.oclecore"/>
+				<item value="*.py"/>
+				<item value="*.cld"/>
+				<item value="*.spsql"/>
+				<item value="*.uml2"/>
+				<item value="*.htpl"/>
+				<item value="*.java"/>
+				<item value="*.docx"/>
+				<item value="*.uml"/>
+				<item value="*.default text"/>
+				<item value="*.ldm"/>
+				<item value="*.jardesc"/>
+				<item value="*.trcmxmi"/>
+				<item value="*.pkgsql"/>
+				<item value="*.target"/>
+				<item value="*.datapool"/>
+			</list>
+			<list key="workingSets">
+			</list>
+		</section>
+	</section>
+	<section name="SearchDialog.ScopePart">
+		<item value="0" key="scope"/>
+	</section>
+</section>

@@ -1,0 +1,163 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+
+<f:view contentType="text/html" id="fview">
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+ 
+
+
+	<title>Administración de Tarjeta Empresarial</title>
+	<link rel="shortcut icon" type="image/x-icon"
+		href="#{request.contextPath}/resources/img/favicon.ico" />
+	<ui:debug />
+	<f:metadata>
+		<ui:insert name="metadata" />
+	</f:metadata>
+
+	<h:head>
+
+		<link rel="stylesheet" type="text/css"
+			href="#{request.contextPath}/resources/css/resetearcss.css" />
+		<link rel="stylesheet" type="text/css"
+			href="#{request.contextPath}/resources/css/tipografias.css" />
+		<link rel="stylesheet" type="text/css"
+			href="#{request.contextPath}/resources/css/plantillaMenu.css" />
+		<link rel="stylesheet" type="text/css"
+			href="#{request.contextPath}/resources/css/bn-principal.css" />
+		<link rel="stylesheet" type="text/css"
+			href="#{request.contextPath}/resources/css/options.css" />
+
+		<link rel="stylesheet" type="text/css"
+			href="#{request.contextPath}/resources/css/contenido-registro.css" />
+
+		<link rel="stylesheet" type="text/css"
+			href="#{request.contextPath}/resources/css/mejorasAdmin.css" />
+
+		<h:outputStylesheet name="css/iconos.css" />
+		<h:outputScript library="js" name="calendar_es.js" />
+		<h:outputScript library="js" name="funcion.js" />
+
+	</h:head>
+
+	<h:body onkeydown="return (event.keyCode != 116)">
+
+		<input type="hidden" id="baseurl" name="baseurl"
+			value="#{request.contextPath}" />
+
+		<ui:include src="header.xhtml" />
+
+		<div class="fondo-principal" style="margin-top: 80px;">
+			<center>
+				<table style="width: 80%;">
+					<tr>
+						<td>
+
+							<div class="sombra-inferior plantilla-front"
+								style="max-width: 100%; min-height: 360px; min-width: 100%; border-radius: 25px; border: 1px solid #d1d1d1; background: #fff; padding: 0px; box-shadow: 0px 5px 5px 0px #bbb; margin: auto;"
+								id="contenidos-informativos">
+
+								<table style="margin: 20px auto; width: 95%;">
+									<tr>
+										<td style="width: 25%;">
+											<div style="margin: auto;">
+												<ui:include src="menu.xhtml"></ui:include>
+											</div>
+										</td>
+										<td style="width: 75%;">
+											<div style="margin: auto;">
+												<center>
+													<ui:insert name="content"></ui:insert>
+												</center>
+											</div>
+										</td>
+									</tr>
+								</table>
+
+
+
+							</div>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<div id="pie-pagina">
+								<div id="titulo-pie-pagina">Banco de la Naci&oacute;n</div>
+								<div id="oficinas">
+									<p>Lima - Per&uacute;. &copy; 2018 Todos los derechos
+										reservados</p>
+								</div>
+							</div>
+						</td>
+					</tr>
+				</table>
+			</center>
+		</div>
+
+		<p:dialog widgetVar="statusDialog" modal="true" draggable="false"
+			position="center" onShow="statusDialog.initPosition()"
+			 closable="false"
+			resizable="false" showHeader="false">
+			<center>
+				<p:outputLabel value="Cargando.." style="font-size:12px" />
+				<br />
+			</center>
+			<p:graphicImage name="/img/ajaxloadingbar.gif" />
+		</p:dialog>
+
+		<p:dialog style="background-color:#f0f0f0;position:absolute"
+			onShow="sessionInvalidaDialog.initPosition()" position="center"
+			header="Sesión Terminada" widgetVar="sessionInvalidaDialog"
+			modal="true" closable="false" resizable="false" draggable="false">
+
+			<table>
+				<tr>
+					<td>
+						<div style="float: left; margin: 20px 0 10px 20px;">
+							<p:graphicImage style="float:left" name="img/chica.png" />
+						</div>
+					</td>
+					<td>
+						<div style="float: right;">
+							<p:outputLabel
+								style="line-height:2; position:relative;background: url(#{request.contextPath}/resources/img/plantillaBN/mapeo.jpg) no-repeat;margin-bottom:45px;height: 100px;padding: 25px 25px 0px 70px;width: 200px;float:right; font-family:daxcompact-mediumregular;"
+								value="#{seguridadController.mensajeSesionInvalida()}" />
+						</div>
+					</td>
+				</tr>
+				<tr>
+					<td colspan="2">
+						<div class="dashed"></div>
+						<div style="text-align: center; width: 100%; margin-bottom: 10px;">
+							<p:button value="Aceptar" styleClass="btnGrande"
+								outcome="#{seguridadController.paginaLogin()}" />
+						</div>
+					</td>
+				</tr>
+			</table>
+		</p:dialog>
+
+		<script type="text/javascript">
+			function ajaxSessionTimeout() {
+				sessionInvalidaDialog.show();
+			}
+
+			!function($) {
+				$.ajaxSetup({
+					statusCode : {
+						901 : ajaxSessionTimeout,
+						500 : ajaxSessionTimeout
+					}
+				});
+			}(window.jQuery);
+		</script>
+
+	</h:body>
+</f:view>
+
+
+</html>

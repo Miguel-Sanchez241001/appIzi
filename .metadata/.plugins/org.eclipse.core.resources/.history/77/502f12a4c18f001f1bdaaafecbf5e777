@@ -1,0 +1,10 @@
+
+package pe.com.bn.app.services;
+
+import javax.enterprise.context.ApplicationScoped;
+
+
+@ApplicationScoped
+public class WsFacade {
+
+}

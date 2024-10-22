@@ -1,0 +1,56 @@
+package pe.com.bn.app.view.controller;
+
+import java.io.Serializable;
+
+import javax.faces.bean.ManagedBean;
+import javax.faces.bean.ViewScoped;
+import javax.inject.Inject;
+import javax.inject.Named;
+
+import pe.com.bn.app.dto.ws.DTOConsultaDatosTarjeta;
+import pe.com.bn.app.services.WsFacade;
+
+@Named
+@ViewScoped
+public class TarjetaController implements Serializable{
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	@Inject
+	public WsFacade facade;
+	
+    private String numeroTarjeta;
+    private DTOConsultaDatosTarjeta tarjetaDatos;
+
+    // Método para consultar los datos de la tarjeta
+    public void consultarDatosTarjeta() {
+        try {
+            tarjetaDatos = facade.informacionDeTarjeta(numeroTarjeta);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+
+
+
+
+
+    // Getters y Setters
+    public String getNumeroTarjeta() {
+        return numeroTarjeta;
+    }
+
+    public void setNumeroTarjeta(String numeroTarjeta) {
+        this.numeroTarjeta = numeroTarjeta;
+    }
+
+    public DTOConsultaDatosTarjeta getTarjetaDatos() {
+        return tarjetaDatos;
+    }
+
+    public void setTarjetaDatos(DTOConsultaDatosTarjeta tarjetaDatos) {
+        this.tarjetaDatos = tarjetaDatos;
+    }
+}

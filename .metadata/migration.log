@@ -1,0 +1,19 @@
+
+INFO     Validating project: SATE_ope
+INFO       Running validator: Legacy Workspace Detector (id= LegacyWorkspaceDetector)
+INFO       Finished running validator: Legacy Workspace Detector (id= LegacyWorkspaceDetector)
+INFO       Running validator: EJB Mapping Validator (id= EjbMappingValidator)
+INFO         The project has no EJB model associated with it.  EJB mapping backend validation will not be performed.
+INFO       Finished running validator: EJB Mapping Validator (id= EjbMappingValidator)
+INFO       Running validator: WebSphere Facet Validator (id= WebSphereFacetValidator)
+OK           The WebSphere facet "WebSphere Web (Extended) 8.5" is compatible with the WebSphere runtime "WebSphere Application Server v8.5".
+OK           The WebSphere facet "WebSphere Web (Co-existence) 8.5" is compatible with the WebSphere runtime "WebSphere Application Server v8.5".
+OK           The WebSphere Co-Existence facet pre-requisite exists for the WebSphere Extended facet.
+INFO       Finished running validator: WebSphere Facet Validator (id= WebSphereFacetValidator)
+INFO       Running validator: WebSphere Runtime Validator (id= WebSphereRuntimeValidator)
+OK           The WebSphere runtime is valid at the configured path:  C:/RAD9/IBM/WebSphere/AppServer
+OK           The WebSphere runtime is at a supported level:  8.5
+INFO       Finished running validator: WebSphere Runtime Validator (id= WebSphereRuntimeValidator)
+INFO     Finished validating project: SATE_ope
+
+Migration complete

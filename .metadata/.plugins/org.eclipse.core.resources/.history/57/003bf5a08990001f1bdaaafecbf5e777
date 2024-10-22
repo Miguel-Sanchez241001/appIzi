@@ -1,0 +1,388 @@
+<ui:composition template="/plantilla/layout.xhtml"
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+	<ui:define name="content">
+
+		<h:form id="consultaDataForm">
+			<h1>Consulta de Cliente</h1>
+			<p:growl id="growl" showDetail="true" life="5000" />
+
+			<p:panelGrid columns="2">
+				<p:outputLabel value="Número de Tarjeta:" for="numTarjeta" />
+				<p:inputText id="numTarjeta"
+					value="#{consultaDatosController.tarjetaModel.numTarjeta}"
+					required="true" label="Número de Tarjeta" />
+
+				<p:outputLabel value="DNI del Cliente:" for="dni" />
+				<p:inputText id="dni"
+					value="#{consultaDatosController.tarjetaModel.datosDNI.numDocumento}"
+					required="true" label="Número de DNI" />
+
+				<p:commandButton value="Consultar Datos de Cuenta"
+					action="#{consultaDatosController.consultarCuentaTarjeta}"
+					process="@form" update="consultaDataForm growl"
+					onstart="PF('statusDialog').show();"
+					oncomplete="PF('statusDialog').hide();" />
+				<p:commandButton value="Consultar Datos de tarjeta"
+					action="#{consultaDatosController.consultarDatosTarjeta}"
+					process="@form" update="consultaDataForm growl"
+					onstart="PF('statusDialog').show();"
+					oncomplete="PF('statusDialog').hide();" />
+				<p:commandButton value="Consultar Datos por DNI"
+					action="#{consultaDatosController.consultarDatosDNI}"
+					process="@form" update="consultaDataForm growl"
+					onstart="PF('statusDialog').show();"
+					oncomplete="PF('statusDialog').hide();" />
+
+				<p:commandButton value="Consultarmovimientos"
+					action="#{consultaDatosController.consultarMovimientosTarjeta}"
+					process="@form" update="consultaDataForm growl"
+					onstart="PF('statusDialog').show();"
+					oncomplete="PF('statusDialog').hide();" />
+			</p:panelGrid>
+
+<p:panel   header="Resutlado Data"
+				rendered="#{consultaDatosController.tarjetaModel.busquedaRealizada}">
+			<p:panelGrid id="psnrlafa" columns="4"
+				rendered="#{consultaDatosController.tarjetaModel.busquedaRealizada}">
+
+				<p:panelGrid id="panelDatosTarjeta" columns="2"
+					rendered="#{consultaDatosController.tarjetaModel.busquedaRealizada}"
+					styleClass="ui-grid-responsive">
+					<h:outputText value="Código de Emisor:" />
+					<h:outputText
+						value="#{consultaDatosController.tarjetaModel.datosDNI.codEmisor}" />
+
+					<h:outputText value="Código de Usuario:" />
+					<h:outputText
+						value="#{consultaDatosController.tarjetaModel.datosDNI.codUsuario}" />
+
+					<h:outputText value="Número de Terminal:" />
+					<h:outputText
+						value="#{consultaDatosController.tarjetaModel.datosDNI.numTerminal}" />
+
+					<h:outputText value="Número de Referencia:" />
+					<h:outputText
+						value="#{consultaDatosController.tarjetaModel.datosDNI.numReferencia}" />
+
+					<h:outputText value="Tipo de Documento:" />
+					<h:outputText
+						value="#{consultaDatosController.tarjetaModel.datosDNI.tipoDocumento}" />
+
+					<h:outputText value="Número de Documento:" />
+					<h:outputText
+						value="#{consultaDatosController.tarjetaModel.datosDNI.numDocumento}" />
+
+					<h:outputText value="Nombre del Cliente:" />
+					<h:outputText
+						value="#{consultaDatosController.tarjetaModel.datosDNI.nomCliente}" />
+
+					<h:outputText value="Apellidos del Cliente:" />
+					<h:outputText
+						value="#{consultaDatosController.tarjetaModel.datosDNI.apeCliente}" />
+
+					<h:outputText value="Correo Electrónico:" />
+					<h:outputText
+						value="#{consultaDatosController.tarjetaModel.datosDNI.correoCliente}" />
+
+					<h:outputText value="Teléfono:" />
+					<h:outputText
+						value="#{consultaDatosController.tarjetaModel.datosDNI.telCliente}" />
+
+					<h:outputText value="Fecha de Transacción en Terminal:" />
+					<h:outputText
+						value="#{consultaDatosController.tarjetaModel.datosDNI.fechaTxnTerminal}" />
+
+					<h:outputText value="Hora de Transacción en Terminal:" />
+					<h:outputText
+						value="#{consultaDatosController.tarjetaModel.datosDNI.horaTxnTerminal}" />
+
+					<h:outputText value="ID de Transacción:" />
+					<h:outputText
+						value="#{consultaDatosController.tarjetaModel.datosDNI.idTransaccion}" />
+
+					<h:outputText value="Código de Respuesta:" />
+					<h:outputText
+						value="#{consultaDatosController.tarjetaModel.datosDNI.codRespuesta}" />
+
+					<h:outputText value="Descripción de Respuesta:" />
+					<h:outputText
+						value="#{consultaDatosController.tarjetaModel.datosDNI.descRespuesta}" />
+				</p:panelGrid>
+
+
+				<p:panelGrid id="panelCuenta" columns="2"
+					rendered="#{consultaDatosController.tarjetaModel.busquedaRealizada}"
+					styleClass="ui-grid-responsive">
+
+					<h:outputText value="Número de Tarjeta Monedero:" />
+					<h:outputText
+						value="#{consultaDatosController.tarjetaModel.cuentaDatos.numTarjetaMonedero}" />
+
+					<h:outputText value="Código de Emisor:" />
+					<h:outputText
+						value="#{consultaDatosController.tarjetaModel.cuentaDatos.codEmisor}" />
+
+					<h:outputText value="Código de Usuario:" />
+					<h:outputText
+						value="#{consultaDatosController.tarjetaModel.cuentaDatos.codUsuario}" />
+
+					<h:outputText value="Número de Terminal:" />
+					<h:outputText
+						value="#{consultaDatosController.tarjetaModel.cuentaDatos.numTerminal}" />
+
+					<h:outputText value="Número de Referencia:" />
+					<h:outputText
+						value="#{consultaDatosController.tarjetaModel.cuentaDatos.numReferencia}" />
+
+					<h:outputText value="Comercio:" />
+					<h:outputText
+						value="#{consultaDatosController.tarjetaModel.cuentaDatos.comercio}" />
+
+					<h:outputText value="Moneda:" />
+					<h:outputText
+						value="#{consultaDatosController.tarjetaModel.cuentaDatos.moneda}" />
+
+					<h:outputText value="Fecha de Transacción en Terminal:" />
+					<h:outputText
+						value="#{consultaDatosController.tarjetaModel.cuentaDatos.fechaTxnTerminal}" />
+
+					<h:outputText value="Hora de Transacción en Terminal:" />
+					<h:outputText
+						value="#{consultaDatosController.tarjetaModel.cuentaDatos.horaTxnTerminal}" />
+
+					<h:outputText value="Código de Autorización:" />
+					<h:outputText
+						value="#{consultaDatosController.tarjetaModel.cuentaDatos.codAutorizacion}" />
+
+					<h:outputText value="Saldo de Línea de Crédito:" />
+					<h:outputText
+						value="#{consultaDatosController.tarjetaModel.cuentaDatos.saldoLineaCredito}" />
+
+					<h:outputText value="Saldo Disponible de Consumo:" />
+					<h:outputText
+						value="#{consultaDatosController.tarjetaModel.cuentaDatos.saldoDispConsumo}" />
+
+					<h:outputText value="Saldo Efectivo Disponible:" />
+					<h:outputText
+						value="#{consultaDatosController.tarjetaModel.cuentaDatos.saldoDispEfectivo}" />
+
+					<h:outputText value="Saldo Actual:" />
+					<h:outputText
+						value="#{consultaDatosController.tarjetaModel.cuentaDatos.saldoActual}" />
+
+					<h:outputText value="Saldo Pago Mínimo:" />
+					<h:outputText
+						value="#{consultaDatosController.tarjetaModel.cuentaDatos.saldoPagoMinimo}" />
+
+					<h:outputText value="Saldo Pago Total:" />
+					<h:outputText
+						value="#{consultaDatosController.tarjetaModel.cuentaDatos.saldoPagoTotal}" />
+
+					<h:outputText value="Saldo Pago Facturado:" />
+					<h:outputText
+						value="#{consultaDatosController.tarjetaModel.cuentaDatos.saldoPagoFacturado}" />
+
+					<h:outputText value="Fecha Límite de Pago:" />
+					<h:outputText
+						value="#{consultaDatosController.tarjetaModel.cuentaDatos.saldoFechaLimPago}" />
+
+					<h:outputText value="Fecha de Apertura:" />
+					<h:outputText
+						value="#{consultaDatosController.tarjetaModel.cuentaDatos.saldoFechaApertura}" />
+
+					<h:outputText value="Código de Respuesta:" />
+					<h:outputText
+						value="#{consultaDatosController.tarjetaModel.cuentaDatos.codRespuesta}" />
+
+					<h:outputText value="Descripción de Respuesta:" />
+					<h:outputText
+						value="#{consultaDatosController.tarjetaModel.cuentaDatos.descRespuesta}" />
+
+					<h:outputText value="Saldo Contable:" />
+					<h:outputText
+						value="#{consultaDatosController.tarjetaModel.cuentaDatos.saldoContable}" />
+
+					<h:outputText value="Saldo Días en Mora:" />
+					<h:outputText
+						value="#{consultaDatosController.tarjetaModel.cuentaDatos.saldoDiasMora}" />
+
+					<h:outputText value="Saldo Importe en Mora:" />
+					<h:outputText
+						value="#{consultaDatosController.tarjetaModel.cuentaDatos.saldoImporteMora}" />
+
+					<h:outputText value="Calificación de Cliente:" />
+					<h:outputText
+						value="#{consultaDatosController.tarjetaModel.cuentaDatos.saldoCalificacionCliente}" />
+
+					<h:outputText value="Fecha de Último Pago:" />
+					<h:outputText
+						value="#{consultaDatosController.tarjetaModel.cuentaDatos.saldoFechaUltPago}" />
+
+					<h:outputText value="Fecha de Última Factura:" />
+					<h:outputText
+						value="#{consultaDatosController.tarjetaModel.cuentaDatos.saldoFechaUltFact}" />
+
+					<h:outputText value="Forma de Pago:" />
+					<h:outputText
+						value="#{consultaDatosController.tarjetaModel.cuentaDatos.saldoFormaPago}" />
+
+					<h:outputText value="Saldo Porcentaje DE:" />
+					<h:outputText
+						value="#{consultaDatosController.tarjetaModel.cuentaDatos.saldoPorcentajeDE}" />
+
+					<h:outputText value="Saldo Flag Porcentaje DE:" />
+					<h:outputText
+						value="#{consultaDatosController.tarjetaModel.cuentaDatos.saldoFlagPorcDE}" />
+
+					<h:outputText value="Saldo Puntos Plata Consumo:" />
+					<h:outputText
+						value="#{consultaDatosController.tarjetaModel.cuentaDatos.saldoPuntosPlataCons}" />
+
+				</p:panelGrid>
+
+
+				<p:panelGrid id="panelResultadoTar" columns="2"
+					rendered="#{consultaDatosController.tarjetaModel.busquedaRealizada}">
+					<h:outputText value="Código Emisor:" />
+					<h:outputText
+						value="#{consultaDatosController.tarjetaModel.tarjetaDatos.codEmisor}" />
+
+					<h:outputText value="Código Usuario:" />
+					<h:outputText
+						value="#{consultaDatosController.tarjetaModel.tarjetaDatos.codUsuario}" />
+
+					<h:outputText value="Número Terminal:" />
+					<h:outputText
+						value="#{consultaDatosController.tarjetaModel.tarjetaDatos.numTerminal}" />
+
+					<h:outputText value="Número de Tarjeta:" />
+					<h:outputText
+						value="#{consultaDatosController.tarjetaModel.tarjetaDatos.numTarjeta}" />
+
+					<h:outputText value="Fecha Expiración:" />
+					<h:outputText
+						value="#{consultaDatosController.tarjetaModel.tarjetaDatos.fechaExpiracion}" />
+
+					<h:outputText value="Comercio:" />
+					<h:outputText
+						value="#{consultaDatosController.tarjetaModel.tarjetaDatos.comercio}" />
+					<h:outputText value="Bloqueo" />
+					<h:outputText
+						value="#{consultaDatosController.tarjetaModel.tarjetaDatos.codigoBloqueo}" />
+
+					<h:outputText value="Fecha Txn Terminal:" />
+					<h:outputText
+						value="#{consultaDatosController.tarjetaModel.tarjetaDatos.fechaTxnTerminal}" />
+
+					<h:outputText value="Hora Txn Terminal:" />
+					<h:outputText
+						value="#{consultaDatosController.tarjetaModel.tarjetaDatos.horaTxnTerminal}" />
+
+					<h:outputText value="Código Respuesta:" />
+					<h:outputText
+						value="#{consultaDatosController.tarjetaModel.tarjetaDatos.codRespuesta}" />
+
+					<h:outputText value="Descripción Respuesta:" />
+					<h:outputText
+						value="#{consultaDatosController.tarjetaModel.tarjetaDatos.descRespuesta}" />
+				</p:panelGrid>
+				
+				<p:panelGrid id="panelMovimientosExpediente" columns="2"
+					rendered="#{consultaDatosController.tarjetaModel.busquedaRealizada}"
+					styleClass="ui-grid-responsive">
+
+					<h:outputText value="Código de Emisor:" />
+					<h:outputText
+						value="#{consultaDatosController.tarjetaModel.expedienteMovimientos.codEmisor}" />
+
+					<h:outputText value="Código de Usuario:" />
+					<h:outputText
+						value="#{consultaDatosController.tarjetaModel.expedienteMovimientos.codUsuario}" />
+
+					<h:outputText value="Número de Terminal:" />
+					<h:outputText
+						value="#{consultaDatosController.tarjetaModel.expedienteMovimientos.numTerminal}" />
+
+					<h:outputText value="Número de Cuenta:" />
+					<h:outputText
+						value="#{consultaDatosController.tarjetaModel.expedienteMovimientos.numCuenta}" />
+
+					<h:outputText value="Número de Referencia:" />
+					<h:outputText
+						value="#{consultaDatosController.tarjetaModel.expedienteMovimientos.numReferencia}" />
+
+					<h:outputText value="Fecha de Expiración:" />
+					<h:outputText
+						value="#{consultaDatosController.tarjetaModel.expedienteMovimientos.fechaExpiracion}" />
+
+					<h:outputText value="Comercio:" />
+					<h:outputText
+						value="#{consultaDatosController.tarjetaModel.expedienteMovimientos.comercio}" />
+
+					<h:outputText value="Moneda:" />
+					<h:outputText
+						value="#{consultaDatosController.tarjetaModel.expedienteMovimientos.moneda}" />
+
+					<h:outputText value="Fecha de Transacción en Terminal:" />
+					<h:outputText
+						value="#{consultaDatosController.tarjetaModel.expedienteMovimientos.fechaTxnTerminal}" />
+
+					<h:outputText value="Hora de Transacción en Terminal:" />
+					<h:outputText
+						value="#{consultaDatosController.tarjetaModel.expedienteMovimientos.horaTxnTerminal}" />
+
+					<h:outputText value="ID de Transacción:" />
+					<h:outputText
+						value="#{consultaDatosController.tarjetaModel.expedienteMovimientos.idTransaccion}" />
+
+					<h:outputText value="Código de Respuesta:" />
+					<h:outputText
+						value="#{consultaDatosController.tarjetaModel.expedienteMovimientos.codRespuesta}" />
+
+					<h:outputText value="Descripción de Respuesta:" />
+					<h:outputText
+						value="#{consultaDatosController.tarjetaModel.expedienteMovimientos.descRespuesta}" />
+
+				</p:panelGrid>
+
+			</p:panelGrid>
+		</p:panel>		
+			<p:panel id="panelMovimientos" header="Movimientos de Tarjeta"
+				rendered="#{consultaDatosController.tarjetaModel.busquedaRealizada}">
+				<p:dataTable var="mov"
+					value="#{consultaDatosController.tarjetaModel.expedienteMovimientos.movimientos}"
+					style="width: 100%;">
+					<p:column headerText="Fecha">
+						<h:outputText value="#{mov.fechaTxn}" />
+					</p:column>
+					<p:column headerText="Descripción">
+						<h:outputText value="#{mov.descripcionTxn}" />
+					</p:column>
+					<p:column headerText="Monto">
+						<h:outputText value="#{mov.montoTxn}" />
+					</p:column>
+					<p:column headerText="Operación">
+						<h:outputText value="#{mov.operacion}" />
+					</p:column>
+					<p:column headerText="Saldo Posterior">
+						<h:outputText value="#{mov.sigMontoTxn}" />
+					</p:column>
+				</p:dataTable>
+			</p:panel>
+
+			<p:dialog id="statusDialog" widgetVar="statusDialog" modal="true"
+				closable="false" draggable="false" resizable="false"
+				showHeader="false" width="200">
+				<p:outputPanel style="text-align:center;">
+					<h:outputText value="Cargando..." style="font-size:16px;" />
+				</p:outputPanel>
+			</p:dialog>
+		</h:form>
+
+	</ui:define>
+</ui:composition>

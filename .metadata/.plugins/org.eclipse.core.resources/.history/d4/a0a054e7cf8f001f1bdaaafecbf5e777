@@ -1,0 +1,80 @@
+package pe.com.bn.app.tranversal.config;
+
+import javax.enterprise.context.ApplicationScoped;
+
+ 
+ 
+
+@ApplicationScoped
+public class Parametros {
+	
+	
+	  // PARAMETROS MC con valores por defecto
+    public String codigoEmisorMc = "191";
+    public String codigoUsuarioMc = "TT9999";
+    public String numTerminalMc = "11010101";
+    public String prefijoNumReferenciaMc = "AC";
+    public String wsUsuarioMc = "4858643428";
+    public String wsClaveMc = "aza877azutht98b8";
+    public String wsSoapMc = "https://testwsgestiontarjetas.izipay.pe/WCFGestionTarjetas/Service1.svc";
+    public String wsComercioMc = "4058950";
+   	
+	
+	
+	
+	
+	
+	
+	
+	
+	public String getCodigoEmisorMc() {
+		return codigoEmisorMc;
+	}
+	public void setCodigoEmisorMc(String codigoEmisorMc) {
+		this.codigoEmisorMc = codigoEmisorMc;
+	}
+	public String getCodigoUsuarioMc() {
+		return codigoUsuarioMc;
+	}
+	public void setCodigoUsuarioMc(String codigoUsuarioMc) {
+		this.codigoUsuarioMc = codigoUsuarioMc;
+	}
+	public String getNumTerminalMc() {
+		return numTerminalMc;
+	}
+	public void setNumTerminalMc(String numTerminalMc) {
+		this.numTerminalMc = numTerminalMc;
+	}
+	public String getPrefijoNumReferenciaMc() {
+		return prefijoNumReferenciaMc;
+	}
+	public void setPrefijoNumReferenciaMc(String prefijoNumReferenciaMc) {
+		this.prefijoNumReferenciaMc = prefijoNumReferenciaMc;
+	}
+	public String getWsUsuarioMc() {
+		return wsUsuarioMc;
+	}
+	public void setWsUsuarioMc(String wsUsuarioMc) {
+		this.wsUsuarioMc = wsUsuarioMc;
+	}
+	public String getWsClaveMc() {
+		return wsClaveMc;
+	}
+	public void setWsClaveMc(String wsClaveMc) {
+		this.wsClaveMc = wsClaveMc;
+	}
+	public String getWsSoapMc() {
+		return wsSoapMc;
+	}
+	public void setWsSoapMc(String wsSoapMc) {
+		this.wsSoapMc = wsSoapMc;
+	}
+	public String getWsComercioMc() {
+		return wsComercioMc;
+	}
+	public void setWsComercioMc(String wsComercioMc) {
+		this.wsComercioMc = wsComercioMc;
+	}
+	
+	
+}

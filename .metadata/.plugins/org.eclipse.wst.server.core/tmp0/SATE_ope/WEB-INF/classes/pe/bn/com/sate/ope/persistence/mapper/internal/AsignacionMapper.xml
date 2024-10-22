@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.2//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper
+	namespace="pe.bn.com.sate.ope.persistence.mapper.internal.AsignacionMapper">
+
+	<!-- ResultMap para mapear los resultados de la tabla BNSATE04_ASIGNACION -->
+	<resultMap id="mapAsignacion"
+		type="pe.bn.com.sate.ope.transversal.dto.sate.Asignacion">
+		<result property="idAsi" column="B04_ID_CAS" />
+		<result property="idTar" column="B05_ID_TAR" />
+		<result property="codigoAsignacion" column="B04_CODIGO_ASIGNACION" />
+		<result property="fechaInicioLinea" column="B04_FECHA_INICIO_LINEA" />
+		<result property="fechaFinLinea" column="B04_FECHA_FIN_LINEA" />
+		<result property="fechaRegistro" column="B04_FECHA_REGISTRO" />
+		<result property="linea" column="B04_LINEA" />
+		<result property="cuentaExpediente" column="B04_CUENTA_EXPEDIENTE" />
+		<!-- Nuevos campos -->
+		<result property="estado" column="estado" />
+		<result property="numTar" column="B05_NUM_TARJETA" />
+		<result property="tarFechaVencimineto" column="B05_FEC_VENCIMIENTO" />
+	</resultMap>
+
+</mapper>

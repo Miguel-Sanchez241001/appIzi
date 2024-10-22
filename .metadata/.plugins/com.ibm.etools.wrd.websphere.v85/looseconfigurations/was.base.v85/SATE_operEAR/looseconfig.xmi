@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<org.eclipse.jst.j2ee.commonarchivecore.looseconfig:LooseArchive xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:org.eclipse.jst.j2ee.commonarchivecore.looseconfig="commonarchive.looseconfig.xmi" uri="C:\Users\pra_msanchezs\IBM\rationalsdp\workspace-experim\SATE_operEAR" binariesPath="C:\Users\pra_msanchezs\IBM\rationalsdp\workspace-experim\SATE_operEAR" resourcesPath="C:\Users\pra_msanchezs\IBM\rationalsdp\workspace-experim\SATE_operEAR" archiveType="EAR">
+  <looseChildren uri="SATE_ope.war" binariesPath="C:/Users/pra_msanchezs/IBM/rationalsdp/workspace-experim/.metadata/.plugins/org.eclipse.wst.server.core/tmp0\SATE_ope" resourcesPath="C:/Users/pra_msanchezs/IBM/rationalsdp/workspace-experim/.metadata/.plugins/org.eclipse.wst.server.core/tmp0\SATE_ope" archiveType="WAR"/>
+</org.eclipse.jst.j2ee.commonarchivecore.looseconfig:LooseArchive>

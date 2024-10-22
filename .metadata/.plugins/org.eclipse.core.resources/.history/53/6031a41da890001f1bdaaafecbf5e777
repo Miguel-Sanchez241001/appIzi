@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:f="http://java.sun.com/jsf/core">
+
+	<h:form id="formmenu">
+	<input type="hidden" name="_csrf" id="_csrf" value="#{request.getSession().getAttribute('org.springframework.security.web.csrf.HttpSessionCsrfTokenRepository.CSRF_TOKEN').token}">
+ 		</input>
+ 		<div class="menuPanel sombra-inferior">
+			<p:commandButton value="Inicio" styleClass="#{seguridadController.estaSeleccionado('/principal.jsf')? 'activo':''}"
+				actionListener="#{seguridadController.redireccionar}">
+				<f:attribute name="pagina"
+					value="/principal.jsf?faces-redirect=true" />
+			</p:commandButton>
+			<h:panelGrid style="width:100%;"
+				rendered="#{seguridadController.renderizar('ACCESO_TRAMITES')}">
+				<div class="menu-header">
+					<span>Tramites</span>
+				</div>
+			</h:panelGrid>
+			<p:commandButton value="Afiliacion" styleClass="#{seguridadController.estaSeleccionado('/afiliarServicio.jsf')? 'activo':''}"
+				actionListener="#{seguridadController.redireccionar}"
+				rendered="#{seguridadController.renderizar('ACCESO_TRAMITES_AFILIAR_SERVICIO')}">
+				<f:attribute name="pagina"
+					value="/tramites/afiliarServicio.jsf?faces-redirect=true" />
+			</p:commandButton>
+			<p:commandButton value="Desafiliación" styleClass="#{seguridadController.estaSeleccionado('/desafiliarServicio.jsf')? 'activo':''}"
+				actionListener="#{seguridadController.redireccionar}"
+				rendered="#{seguridadController.renderizar('ACCESO_TRAMITES_DESAFILIAR_SERVICIO')}">
+				<f:attribute name="pagina"
+					value="/tramites/desafiliarServicio.jsf?faces-redirect=true" />
+			</p:commandButton>
+			<p:commandButton value="Actualizar representantes" styleClass="#{seguridadController.estaSeleccionado('/actualizarRepresentante.jsf')? 'activo':''}"
+				actionListener="#{seguridadController.redireccionar}"
+				rendered="#{seguridadController.renderizar('ACCESO_TRAMITES_ACTUALIZAR_REPRESENTANTE')}">
+				<f:attribute name="pagina"
+					value="/tramites/actualizarRepresentante.jsf?faces-redirect=true" />
+			</p:commandButton>
+
+			<h:panelGrid style="width:100%;"
+				rendered="#{seguridadController.renderizar('ACCESO_CONSULTA')}">
+				<div class="menu-header">
+					<span>Consultas</span>
+				</div>
+			</h:panelGrid>
+			<p:commandButton value="Afiliados/Desafiliados" styleClass="#{seguridadController.estaSeleccionado('/consultarEmpresa.jsf')? 'activo':''}"
+				actionListener="#{seguridadController.redireccionar}"
+				rendered="#{seguridadController.renderizar('ACCESO_CONSULTA_EMPRESAS')}">
+				<f:attribute name="pagina"
+					value="/consulta/consultarEmpresa.jsf?faces-redirect=true" />
+			</p:commandButton>
+			<p:commandButton value="Representantes" styleClass="#{seguridadController.estaSeleccionado('/consultarRepresentante.jsf')? 'activo':''}"
+				actionListener="#{seguridadController.redireccionar}"
+				rendered="#{seguridadController.renderizar('ACCESO_CONSULTA_REPRESENTANTES')}">
+				<f:attribute name="pagina"
+					value="/consulta/consultarRepresentante.jsf?faces-redirect=true" />
+			</p:commandButton>
+			<p:commandButton value="Usuarios" styleClass="#{seguridadController.estaSeleccionado('/consultarUsuario.jsf')? 'activo':''}"
+				actionListener="#{seguridadController.redireccionar}"
+				rendered="#{seguridadController.renderizar('ACCESO_CONSULTA_USUARIOS')}">
+				<f:attribute name="pagina"
+					value="/consulta/consultarUsuario.jsf?faces-redirect=true" />
+			</p:commandButton>
+
+
+		</div>
+
+
+
+		<script type="text/javascript">
+			
+		</script>
+	</h:form>
+</ui:composition>

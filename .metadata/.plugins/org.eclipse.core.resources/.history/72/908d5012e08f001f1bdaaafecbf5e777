@@ -1,0 +1,54 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+                      "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui">
+    <h:head>
+        <title>Consulta de Tarjeta</title>
+    </h:head>
+    <h:body>
+        <h1>Consulta de Tarjeta</h1>
+        
+        <h:form>
+          <p:panelGrid columns="2">
+        <h:outputLabel for="numTarjeta" value="Número de Tarjeta:" />
+        <p:inputText id="numTarjeta" value="#{tarjetaController.numeroTarjeta}" />
+        <p:commandButton value="Consultar" action="#{tarjetaController.consultarDatosTarjeta}" update="panelResultado" />
+    </p:panelGrid>
+
+        <p:panelGrid id="panelResultado" columns="2" rendered="#{not empty tarjetaController.tarjetaDatos}">
+            <h:outputText value="Código Emisor:" />
+            <h:outputText value="#{tarjetaController.tarjetaDatos.codEmisor}" />
+            
+            <h:outputText value="Código Usuario:" />
+            <h:outputText value="#{tarjetaController.tarjetaDatos.codUsuario}" />
+            
+            <h:outputText value="Número Terminal:" />
+            <h:outputText value="#{tarjetaController.tarjetaDatos.numTerminal}" />
+            
+            <h:outputText value="Número de Tarjeta:" />
+            <h:outputText value="#{tarjetaController.tarjetaDatos.numTarjeta}" />
+            
+            <h:outputText value="Fecha Expiración:" />
+            <h:outputText value="#{tarjetaController.tarjetaDatos.fechaExpiracion}" />
+            
+            <h:outputText value="Comercio:" />
+            <h:outputText value="#{tarjetaController.tarjetaDatos.comercio}" />
+             <h:outputText value="Bloqueo" />
+            <h:outputText value="#{tarjetaController.tarjetaDatos.codigoBloqueo}" />
+            
+            <h:outputText value="Fecha Txn Terminal:" />
+            <h:outputText value="#{tarjetaController.tarjetaDatos.fechaTxnTerminal}" />
+            
+            <h:outputText value="Hora Txn Terminal:" />
+            <h:outputText value="#{tarjetaController.tarjetaDatos.horaTxnTerminal}" />
+            
+            <h:outputText value="Código Respuesta:" />
+            <h:outputText value="#{tarjetaController.tarjetaDatos.codRespuesta}" />
+            
+            <h:outputText value="Descripción Respuesta:" />
+            <h:outputText value="#{tarjetaController.tarjetaDatos.descRespuesta}" />
+        </p:panelGrid>
+        </h:form>
+    </h:body>
+</html>

@@ -1,0 +1,275 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+<f:view contentType="text/html" id="fview">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+      
+    <f:metadata>
+        <ui:insert name="metadata" />
+    </f:metadata>
+
+    <h:head>
+        <!-- Estilos integrados en el archivo -->
+        <style>
+            /* Estilo General */
+            body {
+                font-family: Arial, sans-serif;
+                margin: 0;
+                padding: 0;
+                background-color: #f0f0f0;
+            }
+
+            .fondo-principal {
+                width: 90vw;
+                min-height: 100vh;
+                display: flex;
+                justify-content: center;
+                align-items: flex-start;
+                padding-top: 80px;
+            }
+
+            table {
+                border-collapse: collapse;
+                width: 100%;
+            }
+
+            .sombra-inferior {
+                box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            }
+
+            .center {
+                text-align: center;
+            }
+
+            input[type="hidden"] {
+                display: none;
+            }
+
+            /* Barra Superior (Header) */
+            #header {
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 80px;
+                background-color: #2c3e50;
+                color: white;
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                padding: 0 20px;
+                z-index: 1000;
+            }
+
+            #header img {
+                height: 50px;
+            }
+
+            #header nav ul {
+                list-style: none;
+                margin: 0;
+                padding: 0;
+            }
+
+            #header nav ul li {
+                display: inline-block;
+                margin-left: 20px;
+            }
+
+            #header nav ul li a {
+                color: white;
+                text-decoration: none;
+                font-weight: bold;
+                font-size: 16px;
+            }
+
+            /* Menú Lateral */
+            #menu {
+                background-color: #34495e;
+                height: 100%;
+                width: 100%;
+                color: white;
+                padding: 20px;
+                border-radius: 10px;
+            }
+
+            #menu ul {
+                list-style: none;
+                padding: 0;
+            }
+
+            #menu ul li {
+                margin-bottom: 10px;
+            }
+
+            #menu ul li a {
+                color: white;
+                text-decoration: none;
+                font-size: 16px;
+                font-weight: bold;
+                padding: 10px;
+                display: block;
+                border-radius: 5px;
+            }
+
+            #menu ul li a:hover {
+                background-color: #1abc9c;
+                transition: background-color 0.3s;
+            }
+
+            /* Contenido Central */
+            #content {
+                background-color: white;
+                min-height: 400px;
+                width: 100%;
+                padding: 20px;
+                border-radius: 10px;
+                box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+                margin: 0 auto;
+            }
+
+            /* Pie de Página */
+            #pie-pagina {
+                background-color: #2c3e50;
+                color: white;
+                padding: 20px;
+                text-align: center;
+                border-top: 1px solid #ccc;
+            }
+
+            #pie-pagina p {
+                margin: 0;
+            }
+
+            /* Diálogos (Modal) */
+            .ui-dialog {
+                border-radius: 10px;
+                background-color: #f7f7f7;
+                box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+            }
+
+            .p-dialog {
+                text-align: center;
+                padding: 20px;
+            }
+
+            .p-button {
+                background-color: #1abc9c;
+                color: white;
+                border: none;
+                padding: 10px 20px;
+                border-radius: 5px;
+                cursor: pointer;
+            }
+
+            .p-button:hover {
+                background-color: #16a085;
+            }
+
+            /* Botones Generales */
+            .btnGrande {
+                background-color: #3498db;
+                color: white;
+                padding: 10px 20px;
+                border: none;
+                border-radius: 5px;
+                cursor: pointer;
+            }
+
+            .btnGrande:hover {
+                background-color: #2980b9;
+                transition: background-color 0.3s;
+            }
+
+            /* Spinner de Carga */
+            #statusDialog {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                background-color: rgba(255, 255, 255, 0.9);
+            }
+
+            #statusDialog p {
+                font-size: 16px;
+                color: #333;
+            }
+
+            #statusDialog img {
+                margin-top: 10px;
+            }
+        </style>
+       
+    </h:head>
+
+    <h:body onkeydown="return (event.keyCode != 116)">
+         
+        <ui:include src="header.xhtml" />
+
+        <div class="fondo-principal" style="margin-top: 80px;">
+            <center>
+                <table style="width: 100%;">
+                    <tr>
+                        <td>
+                            <div class="sombra-inferior plantilla-front"
+                                 style="max-width: 100%; min-height: 360px; min-width: 100%; border-radius: 25px; border: 1px solid #d1d1d1; background: #fff; padding: 0px; box-shadow: 0px 5px 5px 0px #bbb; margin: auto;"
+                                 id="contenidos-informativos">
+                                <table style="margin: 20px auto; width: 95%;">
+                                    <tr>
+                                        <td style="width: 25%;">
+                                            <div style="margin: auto;" id="menu">
+                                                <ui:include src="menu.xhtml"></ui:include>
+                                            </div>
+                                        </td>
+                                        <td style="width: 75%;">
+                                            <div style="margin: auto;" id="content">
+                                                <center>
+                                                    <ui:insert name="content"></ui:insert>
+                                                </center>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div id="pie-pagina">
+                                <div id="titulo-pie-pagina">Banco de la Naci&oacute;n</div>
+                                <div id="oficinas">
+                                    <p>Lima - Per&uacute;. &copy; 2018 Todos los derechos reservados</p>
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
+                </table>
+            </center>
+        </div>
+
+     
+
+      
+
+        <script type="text/javascript">
+            function ajaxSessionTimeout() {
+                sessionInvalidaDialog.show();
+            }
+
+            !function($) {
+                $.ajaxSetup({
+                    statusCode : {
+                        901 : ajaxSessionTimeout,
+                        500 : ajaxSessionTimeout
+                    }
+                });
+            }(window.jQuery);
+        </script>
+
+    </h:body>
+</f:view>
+</html>

@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:ui="http://java.sun.com/jsf/facelets"
+    xmlns:h="http://java.sun.com/jsf/html"
+    xmlns:p="http://primefaces.org/ui"
+    xmlns:f="http://java.sun.com/jsf/core">
+
+    <h:form id="formmenu">
+        <input type="hidden" name="_csrf" id="_csrf" value="#{request.getSession().getAttribute('org.springframework.security.web.csrf.HttpSessionCsrfTokenRepository.CSRF_TOKEN').token}">
+        </input>
+        <div class="menuPanel sombra-inferior">
+
+            <!-- Sección para consultas -->
+            <h:panelGrid style="width:100%;">
+                <div class="menu-header">
+                    <span>Consultas</span>
+                </div>
+            </h:panelGrid>
+
+            <!-- Consulta de Tarjeta -->
+            <p:commandButton value="Consulta Tarjeta" styleClass="#{'/consultaTarjeta.jsf'.equals(facesContext.viewRoot.viewId) ? 'activo' : ''}"
+                action="consultaTarjeta?faces-redirect=true">
+            </p:commandButton>
+
+            <!-- Consulta de Cuenta -->
+            <p:commandButton value="Consulta Cuenta" styleClass="#{'/consultaCuenta.jsf'.equals(facesContext.viewRoot.viewId) ? 'activo' : ''}"
+                action="consultaCuenta?faces-redirect=true">
+            </p:commandButton>
+
+            <!-- Consulta de Movimientos -->
+            <p:commandButton value="Consulta Movimientos" styleClass="#{'/consultaMovimientos.jsf'.equals(facesContext.viewRoot.viewId) ? 'activo' : ''}"
+                action="consultaMovimientos?faces-redirect=true">
+            </p:commandButton>
+
+            <!-- Consulta de Cliente -->
+            <p:commandButton value="Consulta Cliente" styleClass="#{'/consultaCliente.jsf'.equals(facesContext.viewRoot.viewId) ? 'activo' : ''}"
+                action="consultaCliente?faces-redirect=true">
+            </p:commandButton>
+
+        </div>
+
+        <style>
+            .menuPanel {
+                background-color: #f1f1f1;
+                border: 1px solid #ddd;
+                padding: 10px;
+                margin-bottom: 10px;
+            }
+
+            .menu-header {
+                font-weight: bold;
+                margin-bottom: 5px;
+            }
+
+            .activo {
+                font-weight: bold;
+                color: blue;
+                background-color: #e0e0e0;
+            }
+
+            .sombra-inferior {
+                box-shadow: 0px 4px 2px -2px gray;
+            }
+
+            p {
+                margin: 0;
+            }
+        </style>
+
+        <script type="text/javascript">
+            document.addEventListener("DOMContentLoaded", function() {
+                console.log("Menu cargado correctamente");
+            });
+        </script>
+    </h:form>
+</ui:composition>

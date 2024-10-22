@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:ui="http://java.sun.com/jsf/facelets"
+    xmlns:h="http://java.sun.com/jsf/html"
+    xmlns:p="http://primefaces.org/ui"
+    xmlns:f="http://java.sun.com/jsf/core">
+
+    <style>
+        .cabecera {
+            background-color: #f1f1f1;
+            padding: 10px;
+            overflow: hidden;
+        }
+        .cabecera-izq {
+            float: left;
+        }
+        .cabecera-der {
+            float: right;
+        }
+        .sistema .texto-sistema-1, .sistema .texto-sistema-2 {
+            display: block;
+            font-weight: bold;
+        }
+        .modulo .texto-modulo-1, .modulo .texto-modulo-2 {
+            display: block;
+        }
+        .texto-banco {
+            font-size: 24px;
+            margin: 0;
+        }
+        .cabecera-datos {
+            background-color: #ddd;
+            padding: 5px;
+            overflow: hidden;
+        }
+        .cabecera-datos-izq {
+            float: left;
+        }
+        .cerrarSesionPos {
+            float: right;
+        }
+        .cerrarSesion {
+            background-color: #ff0000;
+            color: #fff;
+            border: none;
+            padding: 5px 10px;
+            cursor: pointer;
+        }
+        .sp-rojo {
+            color: red;
+        }
+        .sp-gris {
+            color: gray;
+        }
+        .sombra-inferior {
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+    </style>
+
+    <div class="cabecera sombra-inferior">
+        <div class="cabecera-izq">
+            <table>
+                <tr>
+                    <td>
+                        <div class="sistema">
+                            <span class="texto-sistema-1">SISTEMA DE CONSULTA DE DATOS DE TARJETAS IZYPAY</span>
+                            <span class="texto-sistema-2">IZYPAY DATA</span>
+                        </div>
+                    </td>
+                   
+                </tr>
+            </table>
+        </div>
+        <div class="cabecera-der">
+            <h1 class="texto-banco">Banco de la Nación</h1>
+        </div>
+    </div>
+
+ 
+
+</ui:composition>
