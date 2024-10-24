@@ -1,0 +1,19 @@
+package pe.com.bn.app.view.controller;
+
+import java.io.Serializable;
+
+import javax.faces.bean.ManagedBean;
+import javax.faces.bean.ManagedProperty;
+import javax.faces.bean.ViewScoped;
+
+import pe.com.bn.app.services.WsFacade;
+
+@ManagedBean(name = "movimientoController")
+@ViewScoped
+public class MovimientoController implements Serializable{
+	   private static final long serialVersionUID = 1L;
+
+	    @ManagedProperty("#{wsFacade}")
+	    private WsFacade facade;
+
+}

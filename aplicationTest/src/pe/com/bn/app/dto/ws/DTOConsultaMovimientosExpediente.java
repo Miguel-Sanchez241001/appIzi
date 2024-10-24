@@ -1,10 +1,17 @@
 package pe.com.bn.app.dto.ws;
 
+import java.io.Serializable;
+
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
 
 @XmlRootElement(name = "Consulta_Movimientos_Expediente")
-public class DTOConsultaMovimientosExpediente {
+public class DTOConsultaMovimientosExpediente implements Serializable {
+
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private String codEmisor;
     private String codUsuario;
     private String numTerminal;
@@ -263,7 +270,7 @@ public class DTOConsultaMovimientosExpediente {
         this.numTerminal = numTerminal;
     }
     
-    @XmlElement(name = "NumTarjetaMonedero")
+    @XmlElement(name = "NumCuenta")
     public String getNumTarjetaMonedero() {
         return numTarjetaMonedero;
     }

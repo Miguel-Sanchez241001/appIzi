@@ -56,5 +56,7 @@
 <workingSet IMemento.internal.id="SATE_opeEAR"/>
 </workingSet>
 <workingSet aggregate="true" factoryID="org.eclipse.ui.internal.WorkingSetFactory" id="1729626752003_19" label="Window Working Set" name="Aggregate for window 1729626752003"/>
+<workingSet aggregate="true" factoryID="org.eclipse.ui.internal.WorkingSetFactory" id="1729690824994_20" label="Window Working Set" name="Aggregate for window 1729690824994"/>
+<workingSet aggregate="true" factoryID="org.eclipse.ui.internal.WorkingSetFactory" id="1729699898674_21" label="Window Working Set" name="Aggregate for window 1729699898674"/>
 <mruList name="SATE_opeEAR"/>
 </workingSetManager>

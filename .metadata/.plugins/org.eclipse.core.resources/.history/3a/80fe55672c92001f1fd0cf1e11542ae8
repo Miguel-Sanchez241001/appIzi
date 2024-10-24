@@ -1,0 +1,26 @@
+package pe.com.bn.app.view.model;
+
+import java.io.Serializable;
+import java.util.List;
+
+import lombok.Getter;
+import lombok.Setter;
+
+import pe.com.bn.app.dto.ws.DTOConsultaMovimientosExpediente;
+import pe.com.bn.app.dto.ws.MovimientoTarjetaExpediente;
+import pe.com.bn.app.services.WsFacade;
+
+
+@Getter
+@Setter
+public class MovimientoModel implements Serializable{
+	
+	private String numeroCuenta;
+    private DTOConsultaMovimientosExpediente entyMoviemiento;
+    private List<MovimientoTarjetaExpediente> movimientos; 
+
+    
+    public MovimientoModel(){
+    	this.numeroCuenta = "";
+    }
+}

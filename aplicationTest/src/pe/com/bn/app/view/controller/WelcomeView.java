@@ -13,6 +13,11 @@ import java.net.UnknownHostException;
 import java.util.Enumeration;
 import java.util.Date;
 
+import lombok.Getter;
+import lombok.Setter;
+
+@Getter
+@Setter
 @ManagedBean
 @ApplicationScoped
 public class WelcomeView implements Serializable {
@@ -27,13 +32,7 @@ public class WelcomeView implements Serializable {
         incrementGlobalVisitCount();
     }
 
-    public String getMessage() {
-        return message;
-    }
-
-    public void setMessage(String message) {
-        this.message = message;
-    }
+ 
 
     // Obtener la IP del cliente
     public String getClientIP() {

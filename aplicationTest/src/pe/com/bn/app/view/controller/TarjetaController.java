@@ -10,12 +10,18 @@ import javax.faces.bean.ManagedProperty;
 import javax.faces.bean.ViewScoped;
 import javax.faces.context.FacesContext;
 
+import lombok.Getter;
+import lombok.Setter;
+
 import org.apache.log4j.Logger;
 import org.primefaces.context.RequestContext;
 
 import pe.com.bn.app.services.WsFacade;
 import pe.com.bn.app.view.model.TarjetaModel;
 
+
+@Getter
+@Setter
 @ManagedBean(name = "tarjetaController")
 @ViewScoped
 public class TarjetaController implements Serializable {
@@ -33,48 +39,26 @@ public class TarjetaController implements Serializable {
          log.info("TarjetaController inicializado en " + System.identityHashCode(this));
     }
 
-    // Método para consultar los datos de la tarjeta
-    public void consultarDatosTarjeta() {
+     public void consultarDatosTarjeta() {
         try {
             String numeroTarjeta = tarjetaModel.getNumTarjeta();
             log.info("Consultando datos de tarjeta. Número de tarjeta enviado: " + numeroTarjeta);
-            // Llama al servicio para obtener los datos de la tarjeta
-            tarjetaModel.setTarjetaDatos(facade.informacionDeTarjeta(numeroTarjeta));
+             tarjetaModel.setTarjetaDatos(facade.informacionDeTarjeta(numeroTarjeta));
             log.info("Datos de tarjeta recibidos: " + tarjetaModel.getTarjetaDatos());
 
-            // Verifica si los datos de la tarjeta son válidos
-            if (tarjetaModel.getTarjetaDatos() != null) {
-                // Agrega un mensaje de éxito
-            	
+             if (tarjetaModel.getTarjetaDatos() != null && tarjetaModel.getTarjetaDatos().getCodRespuesta().equals("0000") ) {         	
                 FacesContext.getCurrentInstance().addMessage(null,
                     new FacesMessage(FacesMessage.SEVERITY_INFO, "Éxito", "Datos de la tarjeta consultados correctamente."));
                 RequestContext.getCurrentInstance().update("panelResultado");
             } else {
-                // Agrega un mensaje de advertencia si no se encontraron datos
                 FacesContext.getCurrentInstance().addMessage(null,
-                    new FacesMessage(FacesMessage.SEVERITY_WARN, "Advertencia", "No se encontraron datos para la tarjeta ingresada."));
+                    new FacesMessage(FacesMessage.SEVERITY_WARN, "Advertencia", "No se encontraron datos para la tarjeta: "+tarjetaModel.getTarjetaDatos().getDescRespuesta()));
             }
         } catch (Exception e) {
             log.error("Error al consultar los datos de la tarjeta: ", e);
-            // Agrega un mensaje de error
-            FacesContext.getCurrentInstance().addMessage(null,
-                new FacesMessage(FacesMessage.SEVERITY_ERROR, "Error", "Ocurrió un error al consultar los datos de la tarjeta."));
+             FacesContext.getCurrentInstance().addMessage(null,
+                new FacesMessage(FacesMessage.SEVERITY_ERROR, "Error",e.getMessage()));
         }
-    }
-
-    
-    public WsFacade getFacade() {
-        return facade;
-    }
-
-    public void setFacade(WsFacade facade) {
-        this.facade = facade;
-    }
-    public TarjetaModel getTarjetaModel() {
-        return tarjetaModel;
-    }
-
-    public void setTarjetaModel(TarjetaModel tarjetaModel) {
-        this.tarjetaModel = tarjetaModel;
-    }
+    }    
+ 
 }

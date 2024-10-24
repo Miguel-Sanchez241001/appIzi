@@ -1,0 +1,80 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+                      "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui">
+<h:head>
+    <title>Consulta de Cliente</title>
+</h:head>
+<h:body>
+    <h1>Consulta de Cliente</h1>
+    <h:form id="consultaForm">
+        <p:panelGrid columns="2">
+            <h:outputLabel for="tipoDocumento" value="Tipo de Documento:" />
+            <p:inputText id="tipoDocumento" value="#{clienteController.clienteModel.tipoDocumento}" />
+
+            <h:outputLabel for="numeroDni" value="Número de Documento:" />
+            <p:inputText id="numeroDni" value="#{clienteController.clienteModel.numeroDni}" />
+
+            <p:commandButton id="consultarButton" value="Consultar"
+                             action="#{clienteController.consultarDatosCliente}"
+                             update=":consultaForm:panelResultado :consultaForm:growl"
+                             onstart="PF('statusDialog').show();"
+                             oncomplete="PF('statusDialog').hide();" />
+        </p:panelGrid>
+
+        <p:panelGrid id="panelResultado" columns="2" rendered="#{not empty clienteController.clienteModel.cliente}">
+            <h:outputText value="Código Emisor:" />
+            <h:outputText value="#{clienteController.clienteModel.cliente.codEmisor}" />
+
+            <h:outputText value="Código Usuario:" />
+            <h:outputText value="#{clienteController.clienteModel.cliente.codUsuario}" />
+
+            <h:outputText value="Número Terminal:" />
+            <h:outputText value="#{clienteController.clienteModel.cliente.numTerminal}" />
+
+            <h:outputText value="Número de Referencia:" />
+            <h:outputText value="#{clienteController.clienteModel.cliente.numReferencia}" />
+
+            <h:outputText value="Tipo de Documento:" />
+            <h:outputText value="#{clienteController.clienteModel.cliente.tipoDocumento}" />
+
+            <h:outputText value="Número de Documento:" />
+            <h:outputText value="#{clienteController.clienteModel.cliente.numDocumento}" />
+
+            <h:outputText value="Nombre del Cliente:" />
+            <h:outputText value="#{clienteController.clienteModel.cliente.nomCliente}" />
+
+            <h:outputText value="Apellido del Cliente:" />
+            <h:outputText value="#{clienteController.clienteModel.cliente.apeCliente}" />
+
+            <h:outputText value="Correo del Cliente:" />
+            <h:outputText value="#{clienteController.clienteModel.cliente.correoCliente}" />
+
+            <h:outputText value="Teléfono del Cliente:" />
+            <h:outputText value="#{clienteController.clienteModel.cliente.telCliente}" />
+
+            <h:outputText value="Fecha Txn Terminal:" />
+            <h:outputText value="#{clienteController.clienteModel.cliente.fechaTxnTerminal}" />
+
+            <h:outputText value="Hora Txn Terminal:" />
+            <h:outputText value="#{clienteController.clienteModel.cliente.horaTxnTerminal}" />
+
+            <h:outputText value="Código Respuesta:" />
+            <h:outputText value="#{clienteController.clienteModel.cliente.codRespuesta}" />
+
+            <h:outputText value="Descripción Respuesta:" />
+            <h:outputText value="#{clienteController.clienteModel.cliente.descRespuesta}" />
+        </p:panelGrid>
+
+        <p:dialog id="statusDialog" widgetVar="statusDialog" modal="true"
+                  closable="false" draggable="false" resizable="false"
+                  showHeader="false" width="200">
+            <p:outputPanel style="text-align:center;">
+                <h:outputText value="Cargando..." style="font-size:16px;" />
+            </p:outputPanel>
+        </p:dialog>
+        <p:growl id="growl" showDetail="true" life="5000" />
+    </h:form>
+</h:body>
+</html>

@@ -2,8 +2,13 @@ package pe.com.bn.app.view.model;
 
 import java.io.Serializable;
 
+import lombok.Getter;
+import lombok.Setter;
+
 import pe.com.bn.app.dto.ws.DTOConsultaDatosTarjeta;
 
+@Getter
+@Setter
 public class TarjetaModel implements Serializable {
     private static final long serialVersionUID = 1L;
 	private String numTarjeta;
@@ -13,17 +18,6 @@ public class TarjetaModel implements Serializable {
 		this.numTarjeta = "" ;
 	}
 	
-	public String getNumTarjeta() {
-		return numTarjeta;
-	}
-	public void setNumTarjeta(String numTarjeta) {
-		this.numTarjeta = numTarjeta;
-	}
-	public DTOConsultaDatosTarjeta getTarjetaDatos() {
-		return tarjetaDatos;
-	}
-	public void setTarjetaDatos(DTOConsultaDatosTarjeta tarjetaDatos) {
-		this.tarjetaDatos = tarjetaDatos;
-	}
+ 
 
 }

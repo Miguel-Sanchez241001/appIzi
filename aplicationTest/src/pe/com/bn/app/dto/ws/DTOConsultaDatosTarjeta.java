@@ -18,6 +18,14 @@ public class DTOConsultaDatosTarjeta implements Serializable {
     private String numReferencia;
     private String fechaExpiracion;
     private String codigoBloqueo;
+	private String comercio;
+    private String fechaTxnTerminal;
+    private String horaTxnTerminal;
+    private String reservado;
+    private String idTransaccion;
+    private String codRespuesta;
+    private String descRespuesta;
+    
     @XmlElement(name = "Codigo_Bloqueo")
     public String getCodigoBloqueo() {
 		return codigoBloqueo;
@@ -26,15 +34,6 @@ public class DTOConsultaDatosTarjeta implements Serializable {
 	public void setCodigoBloqueo(String codigoBloqueo) {
 		this.codigoBloqueo = codigoBloqueo;
 	}
-
-	private String comercio;
-    private String fechaTxnTerminal;
-    private String horaTxnTerminal;
-    private String reservado;
-    private String idTransaccion;
-    private String codRespuesta;
-    private String descRespuesta;
-
     @XmlElement(name = "CodEmisor")
     public String getCodEmisor() {
         return codEmisor;

@@ -1,10 +1,17 @@
 package pe.com.bn.app.dto.ws;
 
+import java.io.Serializable;
+
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
 
 @XmlRootElement(name = "Consulta_Datos_Expediente")
-public class DTOConsultaDatosExpediente {
+public class DTOConsultaDatosExpediente implements Serializable {
+
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 
     private String codEmisor;
     private String codUsuario;

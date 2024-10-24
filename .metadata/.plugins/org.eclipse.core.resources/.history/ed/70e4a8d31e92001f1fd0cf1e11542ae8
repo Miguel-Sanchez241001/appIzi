@@ -1,0 +1,35 @@
+package pe.com.bn.app.view.controller;
+
+import java.io.Serializable;
+
+import javax.faces.bean.ManagedBean;
+import javax.faces.bean.ManagedProperty;
+import javax.faces.bean.ViewScoped;
+
+import lombok.Getter;
+import lombok.Setter;
+
+import org.apache.log4j.Logger;
+
+import pe.com.bn.app.services.WsFacade;
+import pe.com.bn.app.view.model.ClienteModel;
+
+@Getter
+@Setter
+@ManagedBean(name = "clienteController")
+@ViewScoped
+public class ClienteController implements Serializable{
+	   private static final long serialVersionUID = 1L;
+
+	    @ManagedProperty("#{wsFacade}")
+	    private WsFacade facade;
+	    
+	    private final static Logger log = Logger.getLogger(ClienteController.class);
+
+	    private ClienteModel clienteModel;
+	    public void hola (){
+		    clienteModel = new ClienteModel();
+	         log.info("ClienteController inicializado en " + System.identityHashCode(this));
+
+	    }
+}

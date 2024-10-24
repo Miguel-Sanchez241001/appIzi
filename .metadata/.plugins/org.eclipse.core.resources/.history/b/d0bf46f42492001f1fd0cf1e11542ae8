@@ -1,0 +1,190 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+                      "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui">
+<h:head>
+    <title>Consulta de Cuenta</title>
+</h:head>
+<h:body>
+    <h1>Consulta de Cuenta</h1>
+    <h:form id="consultaForm">
+        <p:panelGrid columns="2">
+            <h:outputLabel for="numeroCuenta" value="Número de Cuenta:" />
+            <p:inputText id="numeroCuenta" value="#{cuentaController.cuentaModel.numeroCuenta}" />
+
+            <p:commandButton id="consultarButton" value="Consultar"
+                             action="#{cuentaController.consultarDatoscuenta}"
+                             update=":consultaForm:panelResultado :consultaForm:growl"
+                             onstart="PF('statusDialog').show();"
+                             oncomplete="PF('statusDialog').hide();" />
+        </p:panelGrid>
+
+        <p:panelGrid id="panelResultado" columns="2" rendered="true">
+            <!-- Campos del objeto cuentaExpediente -->
+            <h:outputText value="Código Emisor:" />
+            <h:outputText value="#{cuentaController.cuentaModel.cuentaExpediente.codEmisor}" />
+
+            <h:outputText value="Código Usuario:" />
+            <h:outputText value="#{cuentaController.cuentaModel.cuentaExpediente.codUsuario}" />
+
+            <h:outputText value="Número Terminal:" />
+            <h:outputText value="#{cuentaController.cuentaModel.cuentaExpediente.numTerminal}" />
+
+            <h:outputText value="Número Referencia:" />
+            <h:outputText value="#{cuentaController.cuentaModel.cuentaExpediente.numReferencia}" />
+
+            <h:outputText value="Número de Cuenta:" />
+            <h:outputText value="#{cuentaController.cuentaModel.cuentaExpediente.numCuenta}" />
+
+            <h:outputText value="Fecha Expiración:" />
+            <h:outputText value="#{cuentaController.cuentaModel.cuentaExpediente.fechaExpiracion}" />
+
+            <h:outputText value="Comercio:" />
+            <h:outputText value="#{cuentaController.cuentaModel.cuentaExpediente.comercio}" />
+
+            <h:outputText value="Moneda:" />
+            <h:outputText value="#{cuentaController.cuentaModel.cuentaExpediente.moneda}" />
+
+            <h:outputText value="Fecha Txn Terminal:" />
+            <h:outputText value="#{cuentaController.cuentaModel.cuentaExpediente.fechaTxnTerminal}" />
+
+            <h:outputText value="Hora Txn Terminal:" />
+            <h:outputText value="#{cuentaController.cuentaModel.cuentaExpediente.horaTxnTerminal}" />
+
+            <h:outputText value="Reservado:" />
+            <h:outputText value="#{cuentaController.cuentaModel.cuentaExpediente.reservado}" />
+
+            <h:outputText value="ID Transacción:" />
+            <h:outputText value="#{cuentaController.cuentaModel.cuentaExpediente.idTransaccion}" />
+
+            <h:outputText value="Código Respuesta:" />
+            <h:outputText value="#{cuentaController.cuentaModel.cuentaExpediente.codRespuesta}" />
+
+            <h:outputText value="Descripción Respuesta:" />
+            <h:outputText value="#{cuentaController.cuentaModel.cuentaExpediente.descRespuesta}" />
+
+            <!-- Campos adicionales (Saldo) -->
+            <h:outputText value="Código Autorización:" />
+            <h:outputText value="#{cuentaController.cuentaModel.cuentaExpediente.codAutorizacion}" />
+
+            <h:outputText value="Saldo Moneda:" />
+            <h:outputText value="#{cuentaController.cuentaModel.cuentaExpediente.saldoMoneda}" />
+
+            <h:outputText value="Saldo Código Bloqueo:" />
+            <h:outputText value="#{cuentaController.cuentaModel.cuentaExpediente.saldoCodBloqueo}" />
+
+            <h:outputText value="Saldo Descripción Bloqueo:" />
+            <h:outputText value="#{cuentaController.cuentaModel.cuentaExpediente.saldoDescBloqueo}" />
+
+            <h:outputText value="Saldo Nombre Tarjeta:" />
+            <h:outputText value="#{cuentaController.cuentaModel.cuentaExpediente.saldoNombreTarjeta}" />
+
+            <h:outputText value="Saldo Fecha Expiración:" />
+            <h:outputText value="#{cuentaController.cuentaModel.cuentaExpediente.saldoFechaExpiracion}" />
+
+            <h:outputText value="Saldo Línea Crédito:" />
+            <h:outputText value="#{cuentaController.cuentaModel.cuentaExpediente.saldoLineaCredito}" />
+
+            <h:outputText value="Saldo Disponible Consumo:" />
+            <h:outputText value="#{cuentaController.cuentaModel.cuentaExpediente.saldoDispConsumo}" />
+
+            <h:outputText value="Saldo Signo Disponible Consumo:" />
+            <h:outputText value="#{cuentaController.cuentaModel.cuentaExpediente.saldoSigDispConsumo}" />
+
+            <h:outputText value="Saldo Efectivo:" />
+            <h:outputText value="#{cuentaController.cuentaModel.cuentaExpediente.saldoEfectivo}" />
+
+            <h:outputText value="Saldo Disponible Efectivo:" />
+            <h:outputText value="#{cuentaController.cuentaModel.cuentaExpediente.saldoDispEfectivo}" />
+
+            <h:outputText value="Saldo Signo Disponible Efectivo:" />
+            <h:outputText value="#{cuentaController.cuentaModel.cuentaExpediente.saldoSigDispEfectivo}" />
+
+            <h:outputText value="Saldo Pago Mínimo:" />
+            <h:outputText value="#{cuentaController.cuentaModel.cuentaExpediente.saldoPagoMinimo}" />
+
+            <h:outputText value="Saldo Pago Total:" />
+            <h:outputText value="#{cuentaController.cuentaModel.cuentaExpediente.saldoPagoTotal}" />
+
+            <h:outputText value="Saldo Pago Facturado:" />
+            <h:outputText value="#{cuentaController.cuentaModel.cuentaExpediente.saldoPagoFacturado}" />
+
+            <h:outputText value="Saldo Fecha Límite de Pago:" />
+            <h:outputText value="#{cuentaController.cuentaModel.cuentaExpediente.saldoFechaLimPago}" />
+
+            <h:outputText value="Saldo Cuenta Principal:" />
+            <h:outputText value="#{cuentaController.cuentaModel.cuentaExpediente.saldoCuentaPrincipal}" />
+
+            <h:outputText value="Saldo Actual:" />
+            <h:outputText value="#{cuentaController.cuentaModel.cuentaExpediente.saldoActual}" />
+
+            <h:outputText value="Saldo Signo Disponible Actual:" />
+            <h:outputText value="#{cuentaController.cuentaModel.cuentaExpediente.saldoSigDispActual}" />
+
+            <h:outputText value="Saldo Fecha Último Pago:" />
+            <h:outputText value="#{cuentaController.cuentaModel.cuentaExpediente.saldoFechaUltPago}" />
+
+            <h:outputText value="Saldo Fecha Última Facturación:" />
+            <h:outputText value="#{cuentaController.cuentaModel.cuentaExpediente.saldoFechaUltFact}" />
+
+            <h:outputText value="Saldo Fecha Apertura:" />
+            <h:outputText value="#{cuentaController.cuentaModel.cuentaExpediente.saldoFechaApertura}" />
+
+            <h:outputText value="Saldo Forma de Pago:" />
+            <h:outputText value="#{cuentaController.cuentaModel.cuentaExpediente.saldoFormaPago}" />
+
+            <h:outputText value="Saldo Porcentaje DE:" />
+            <h:outputText value="#{cuentaController.cuentaModel.cuentaExpediente.saldoPorcentajeDE}" />
+
+            <h:outputText value="Saldo Flag Porc DE:" />
+            <h:outputText value="#{cuentaController.cuentaModel.cuentaExpediente.saldoFlagPorcDE}" />
+
+            <h:outputText value="Saldo Puntos Plata Consumo:" />
+            <h:outputText value="#{cuentaController.cuentaModel.cuentaExpediente.saldoPuntosPlataCons}" />
+
+            <h:outputText value="Saldo Signo Puntos Plata Consumo:" />
+            <h:outputText value="#{cuentaController.cuentaModel.cuentaExpediente.saldoSigPuntosPlataCons}" />
+
+            <h:outputText value="Saldo Monto a Procesar:" />
+            <h:outputText value="#{cuentaController.cuentaModel.cuentaExpediente.saldoMontoProcesar}" />
+
+            <h:outputText value="Saldo Contable:" />
+            <h:outputText value="#{cuentaController.cuentaModel.cuentaExpediente.saldoContable}" />
+
+            <h:outputText value="Saldo Signo Contable:" />
+            <h:outputText value="#{cuentaController.cuentaModel.cuentaExpediente.saldoSigContable}" />
+
+            <h:outputText value="Saldo Días de Mora:" />
+            <h:outputText value="#{cuentaController.cuentaModel.cuentaExpediente.saldoDiasMora}" />
+
+            <h:outputText value="Saldo Importe Mora:" />
+            <h:outputText value="#{cuentaController.cuentaModel.cuentaExpediente.saldoImporteMora}" />
+
+            <h:outputText value="Saldo Calificación Cliente:" />
+            <h:outputText value="#{cuentaController.cuentaModel.cuentaExpediente.saldoCalificacionCliente}" />
+
+            <h:outputText value="Saldo Ind. Cambio PIN:" />
+            <h:outputText value="#{cuentaController.cuentaModel.cuentaExpediente.saldoIndCambioPin}" />
+
+            <h:outputText value="Reservado1:" />
+            <h:outputText value="#{cuentaController.cuentaModel.cuentaExpediente.reservado1}" />
+
+            <h:outputText value="Reservado2:" />
+            <h:outputText value="#{cuentaController.cuentaModel.cuentaExpediente.reservado2}" />
+
+            <h:outputText value="Saldo Ind. Nominada:" />
+            <h:outputText value="#{cuentaController.cuentaModel.cuentaExpediente.saldoIndNominada}" />
+        </p:panelGrid>
+
+        <p:dialog id="statusDialog" widgetVar="statusDialog" modal="true"
+                  closable="false" draggable="false" resizable="false"
+                  showHeader="false" width="200">
+            <p:outputPanel style="text-align:center;">
+                <h:outputText value="Cargando..." style="font-size:16px;" />
+            </p:outputPanel>
+        </p:dialog>
+        <p:growl id="growl" showDetail="true" life="5000" />
+    </h:form>
+</h:body>
+</html>

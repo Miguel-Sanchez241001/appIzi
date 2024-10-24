@@ -1,0 +1,50 @@
+package pe.com.bn.app.tranversal.config;
+
+ 
+import java.io.Serializable;
+
+import javax.annotation.PostConstruct;
+import javax.faces.bean.ApplicationScoped;
+import javax.faces.bean.ManagedBean;
+
+import org.apache.log4j.Logger;
+
+import lombok.Getter;
+import lombok.Setter;
+
+import pe.com.bn.app.tranversal.util.NumeroALetras;
+import pe.com.bn.app.view.controller.MovimientoController;
+
+ 
+@Getter
+@Setter
+@ManagedBean(name = "parametros")
+@ApplicationScoped
+public class Parametros implements Serializable {
+    private static final long serialVersionUID = 1L;
+
+	  // PARAMETROS MC con valores por defecto
+    private String codigoEmisorMc = "191";
+    private String codigoUsuarioMc = "TT9999";
+    private String numTerminalMc = "11010101";
+    private String prefijoNumReferenciaMc = "AC";
+    private String wsUsuarioMc = "4858643428";
+    private String wsClaveMc = "aza877azutht98b8";
+    private String wsSoapMc = "https://testwsgestiontarjetas.izipay.pe/WCFGestionTarjetas/Service1.svc";
+    private String wsComercioMc = "4058950";
+    private final static Logger log = Logger.Parametros(Parametros.class);
+
+    private long numReferenciaActual = 2024032940L;
+    @PostConstruct
+    public void init() {
+    	log.info("Parametros bean inicializado con numReferenciaActual: " + numReferenciaActual);
+    }
+
+    public synchronized String getNextNumReferencia() {
+        numReferenciaActual++;
+        return NumeroALetras.llenarCerosAlaIzquierda(Long.toString(numReferenciaActual), 10);
+    }
+	
+ 
+	
+}
