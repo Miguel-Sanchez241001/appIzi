@@ -10,6 +10,14 @@ xmlns="http://java.sun.com/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLS
         <param-name>primefaces.FONT_AWESOME</param-name>
         <param-value>true</param-value>
     </context-param>
+<context-param>
+    <param-name>primefaces.THEME</param-name>
+    <param-value>luna-blue</param-value> <!-- Cambia a "nova-dark" si prefieres este otro tema -->
+</context-param>
+<context-param>
+    <param-name>primefaces.CLIENT_SIDE_VALIDATION</param-name>
+    <param-value>true</param-value>
+</context-param>
 
     <!-- Configuración de JSF -->
     <context-param>

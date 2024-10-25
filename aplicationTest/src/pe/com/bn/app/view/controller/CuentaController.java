@@ -14,8 +14,8 @@ import lombok.Getter;
 import lombok.Setter;
 
 import org.apache.log4j.Logger;
-import org.primefaces.context.RequestContext;
-
+import org.primefaces.context.PrimeRequestContext;
+ 
 import pe.com.bn.app.services.WsFacade;
 import pe.com.bn.app.view.model.CuentaModel;
 
@@ -54,8 +54,7 @@ public class CuentaController implements Serializable{
  	            	
 	                FacesContext.getCurrentInstance().addMessage(null,
 	                    new FacesMessage(FacesMessage.SEVERITY_INFO, "Éxito", "Datos de la cuenta consultados correctamente."));
-	                RequestContext.getCurrentInstance().update("panelResultado");
-	            } else {
+ 	            } else {
  	                FacesContext.getCurrentInstance().addMessage(null,
 	                    new FacesMessage(FacesMessage.SEVERITY_WARN, "Advertencia", "No se encontraron datos para la cuenta ingresada."));
 	            }

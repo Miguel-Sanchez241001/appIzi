@@ -36,7 +36,7 @@ public class Parametros implements Serializable {
     private String wsComercioMc = "4058950";
     private final static Logger log = Logger.getLogger(Parametros.class);
 
-    private long numReferenciaActual = 2024032940L;
+    private long numReferenciaActual = 2024033040L;
     @PostConstruct
     public void init() {
     	log.info("Parametros bean inicializado con numReferenciaActual: " + numReferenciaActual);
@@ -57,7 +57,7 @@ public class Parametros implements Serializable {
 
         Long numReferenciaActual = (Long) servletContext.getAttribute("numReferenciaActual");
         if (numReferenciaActual == null) {
-            numReferenciaActual = 2024032960L;
+            numReferenciaActual = 202403342L;
         }
         numReferenciaActual++;
         servletContext.setAttribute("numReferenciaActual", numReferenciaActual);

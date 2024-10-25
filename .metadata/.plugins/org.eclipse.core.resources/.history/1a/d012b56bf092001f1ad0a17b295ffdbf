@@ -1,0 +1,162 @@
+package pe.com.bn.app.view.controller;
+
+import java.io.Serializable;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
+import javax.annotation.PostConstruct;
+import javax.faces.application.FacesMessage;
+import javax.faces.bean.ManagedBean;
+import javax.faces.bean.ManagedProperty;
+import javax.faces.bean.ViewScoped;
+import javax.faces.context.FacesContext;
+
+import org.apache.log4j.Logger;
+import org.apache.poi.hssf.usermodel.HSSFCell;
+import org.apache.poi.hssf.usermodel.HSSFCellStyle;
+import org.apache.poi.hssf.usermodel.HSSFFont;
+import org.apache.poi.hssf.usermodel.HSSFRow;
+import org.apache.poi.hssf.usermodel.HSSFSheet;
+import org.apache.poi.hssf.usermodel.HSSFWorkbook;
+import org.apache.poi.hssf.util.HSSFColor;
+import org.apache.poi.ss.util.CellRangeAddress;
+import org.primefaces.context.RequestContext;
+
+import lombok.Getter;
+import lombok.Setter;
+
+import pe.com.bn.app.services.WsFacade;
+import pe.com.bn.app.view.model.MovimientoModel;
+
+@Getter
+@Setter
+@ManagedBean(name = "movimientoController")
+@ViewScoped
+public class MovimientoController implements Serializable {
+	private static final long serialVersionUID = 1L;
+
+	@ManagedProperty("#{wsFacade}")
+	private WsFacade facade;
+
+	private final static Logger log = Logger
+			.getLogger(MovimientoController.class);
+
+	private MovimientoModel movimientoModel;
+
+	@PostConstruct
+	public void init() {
+		movimientoModel = new MovimientoModel();
+		log.info("movimientoController inicializado en "
+				+ System.identityHashCode(this));
+
+	}
+
+	public void consultarMovimiento() {
+		try {
+			String numeroCuenta = movimientoModel.getNumeroCuenta();
+			log.info("Consultando datos de movimiento. Número de movimiento enviado: "
+					+ numeroCuenta);
+			movimientoModel.setEntyMoviemiento(facade
+					.consultaMovimientoPorExpediente(numeroCuenta, "604",
+							new Date()));
+			log.info("Datos de movimiento recibidos: "
+					+ movimientoModel.getEntyMoviemiento());
+
+			if (movimientoModel.getEntyMoviemiento() != null
+					&& movimientoModel.getEntyMoviemiento().getCodRespuesta()
+							.equals("0000")) {
+
+				movimientoModel.setMovimientos(facade
+						.listaMovTarjExp(movimientoModel.getEntyMoviemiento()));
+				FacesContext
+						.getCurrentInstance()
+						.addMessage(
+								null,
+								new FacesMessage(FacesMessage.SEVERITY_INFO,
+										"Éxito",
+										"Datos de la movimiento consultados correctamente."));
+			} else {
+				FacesContext.getCurrentInstance().addMessage(
+						null,
+						new FacesMessage(FacesMessage.SEVERITY_WARN,
+								"Advertencia",
+								"Error en la data de respeusta: "
+										+ movimientoModel.getEntyMoviemiento()
+												.getDescRespuesta()));
+			}
+		} catch (Exception e) {
+			log.error("Error al consultar los datos de la movimiento: ", e);
+			FacesContext.getCurrentInstance().addMessage(
+					null,
+					new FacesMessage(FacesMessage.SEVERITY_ERROR, "Error", e
+							.getMessage()));
+		}
+	}
+
+	// Método preProcess para añadir un título en la parte superior
+    public void preProcessXLS(Object document) {
+        HSSFWorkbook workbook = (HSSFWorkbook) document;
+        HSSFSheet sheet = workbook.getSheetAt(0);
+
+        // Estilo para el título
+        HSSFCellStyle titleStyle = workbook.createCellStyle();
+        titleStyle.setFillForegroundColor(HSSFColor.RED.index);
+        titleStyle.setFillPattern(HSSFCellStyle.SOLID_FOREGROUND);
+        
+        HSSFFont font = workbook.createFont();
+        font.setColor(HSSFColor.WHITE.index); // Texto blanco
+        font.setBoldweight((short) 20);
+        titleStyle.setFont(font);
+
+        // Crear la fila del título en la primera fila (índice 0) y segunda fila (índice 1)
+        HSSFRow titleRow = sheet.createRow(0);
+        HSSFRow titleRow2 = sheet.createRow(1);
+
+        // Combinar celdas para que el título abarque las primeras 8 columnas y dos filas
+        sheet.addMergedRegion(new CellRangeAddress(0, 1, 0, 7));
+        
+        // Insertar el título en la primera celda
+        HSSFCell titleCell = titleRow.createCell(0);
+        titleCell.setCellValue("Título de la Exportación");
+        titleCell.setCellStyle(titleStyle);
+
+        // Ajustar el alto de las filas para mayor visibilidad
+        titleRow.setHeightInPoints(30);
+        titleRow2.setHeightInPoints(30);
+    }
+
+    // Método postProcess para añadir la fecha actual al final
+    public void postProcessXLS(Object document) {
+        HSSFWorkbook workbook = (HSSFWorkbook) document;
+        HSSFSheet sheet = workbook.getSheetAt(0);
+
+        // Estilo para la fecha
+        HSSFCellStyle dateStyle = workbook.createCellStyle();
+        dateStyle.setFillForegroundColor(HSSFColor.RED.index);
+        dateStyle.setFillPattern(HSSFCellStyle.SOLID_FOREGROUND);
+        
+        HSSFFont font = workbook.createFont();
+        font.setColor(HSSFColor.WHITE.index); // Texto blanco
+        font.setBoldweight((short) 20);
+        dateStyle.setFont(font);
+
+        // Obtener la última fila para añadir las nuevas filas con la fecha
+        int lastRow = sheet.getLastRowNum();
+        HSSFRow emptyRow = sheet.createRow(lastRow + 1);
+        HSSFRow dateRow = sheet.createRow(lastRow + 2);
+
+        // Combinar las celdas de la fila de fecha
+        sheet.addMergedRegion(new CellRangeAddress(lastRow + 2, lastRow + 2, 0, 7));
+        
+        // Configurar la fecha actual en el formato deseado
+        String currentDate = new SimpleDateFormat("dd/MM/yyyy").format(new Date());
+        
+        // Crear la celda de fecha y aplicarle estilo
+        HSSFCell dateCell = dateRow.createCell(0);
+        dateCell.setCellValue("Fecha de exportación: " + currentDate);
+        dateCell.setCellStyle(dateStyle);
+
+        // Ajustar el alto de la fila para visibilidad
+        dateRow.setHeightInPoints(20);
+    }
+}

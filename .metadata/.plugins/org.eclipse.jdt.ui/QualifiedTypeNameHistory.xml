@@ -7,8 +7,6 @@
 <fullyQualifiedTypeName name="pe.com.bn.app.dto.Cuenta"/>
 <fullyQualifiedTypeName name="pe.com.bn.app.dto.Tarjeta"/>
 <fullyQualifiedTypeName name="pe.com.bn.app.tranversal.constantes.ConstantesGenerales"/>
-<fullyQualifiedTypeName name="pe.com.bn.app.dto.ws.DTOConsultaMovimientosExpediente"/>
-<fullyQualifiedTypeName name="java.util.Date"/>
 <fullyQualifiedTypeName name="pe.com.bn.app.tranversal.exceptions.InternalExcepcion"/>
 <fullyQualifiedTypeName name="java.text.SimpleDateFormat"/>
 <fullyQualifiedTypeName name="java.text.DateFormat"/>
@@ -19,12 +17,9 @@
 <fullyQualifiedTypeName name="pe.com.bn.app.tranversal.exceptions.ExternalServiceMCProcesosException"/>
 <fullyQualifiedTypeName name="java.io.StringReader"/>
 <fullyQualifiedTypeName name="java.util.Map"/>
-<fullyQualifiedTypeName name="pe.com.bn.app.dto.ws.DTOConsultaDatosExpediente"/>
-<fullyQualifiedTypeName name="pe.com.bn.app.dto.ws.DTOConsultaDatosCliente"/>
 <fullyQualifiedTypeName name="javax.inject.Inject"/>
 <fullyQualifiedTypeName name="pe.com.bn.app.services.WsFacade"/>
 <fullyQualifiedTypeName name="javax.enterprise.context.ApplicationScoped"/>
-<fullyQualifiedTypeName name="javax.annotation.PostConstruct"/>
 <fullyQualifiedTypeName name="pe.com.bn.app.dto.ws.DTOConsultaDatosTarjeta"/>
 <fullyQualifiedTypeName name="pe.com.bn.app.view.model.TarjetaModel"/>
 <fullyQualifiedTypeName name="javax.faces.bean.SessionScoped"/>
@@ -35,9 +30,22 @@
 <fullyQualifiedTypeName name="javax.faces.bean.ApplicationScoped"/>
 <fullyQualifiedTypeName name="javax.faces.bean.ManagedBean"/>
 <fullyQualifiedTypeName name="javax.faces.bean.ManagedProperty"/>
-<fullyQualifiedTypeName name="javax.faces.context.FacesContext"/>
 <fullyQualifiedTypeName name="javax.faces.application.FacesMessage"/>
 <fullyQualifiedTypeName name="org.primefaces.context.RequestContext"/>
-<fullyQualifiedTypeName name="java.io.Serializable"/>
 <fullyQualifiedTypeName name="pe.com.bn.app.view.model.ClienteModel"/>
+<fullyQualifiedTypeName name="pe.com.bn.app.dto.ws.DTOConsultaDatosCliente"/>
+<fullyQualifiedTypeName name="pe.com.bn.app.dto.ws.DTOConsultaDatosExpediente"/>
+<fullyQualifiedTypeName name="pe.com.bn.app.view.model.CuentaModel"/>
+<fullyQualifiedTypeName name="lombok.NoArgsConstructor"/>
+<fullyQualifiedTypeName name="pe.com.bn.app.tranversal.util.Fecha"/>
+<fullyQualifiedTypeName name="java.io.Serializable"/>
+<fullyQualifiedTypeName name="pe.com.bn.app.dto.ws.DTOConsultaMovimientosExpediente"/>
+<fullyQualifiedTypeName name="pe.com.bn.app.dto.ws.MovimientoTarjetaExpediente"/>
+<fullyQualifiedTypeName name="pe.com.bn.app.view.model.MovimientoModel"/>
+<fullyQualifiedTypeName name="java.util.Date"/>
+<fullyQualifiedTypeName name="javax.annotation.PostConstruct"/>
+<fullyQualifiedTypeName name="lombok.Getter"/>
+<fullyQualifiedTypeName name="lombok.Setter"/>
+<fullyQualifiedTypeName name="javax.faces.context.FacesContext"/>
+<fullyQualifiedTypeName name="javax.servlet.ServletContext"/>
 </qualifiedTypeNameHistroy>

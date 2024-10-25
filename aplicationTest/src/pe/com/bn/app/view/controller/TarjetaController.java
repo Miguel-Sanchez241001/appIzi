@@ -14,8 +14,7 @@ import lombok.Getter;
 import lombok.Setter;
 
 import org.apache.log4j.Logger;
-import org.primefaces.context.RequestContext;
-
+ 
 import pe.com.bn.app.services.WsFacade;
 import pe.com.bn.app.view.model.TarjetaModel;
 
@@ -49,8 +48,7 @@ public class TarjetaController implements Serializable {
              if (tarjetaModel.getTarjetaDatos() != null && tarjetaModel.getTarjetaDatos().getCodRespuesta().equals("0000") ) {         	
                 FacesContext.getCurrentInstance().addMessage(null,
                     new FacesMessage(FacesMessage.SEVERITY_INFO, "Éxito", "Datos de la tarjeta consultados correctamente."));
-                RequestContext.getCurrentInstance().update("panelResultado");
-            } else {
+             } else {
                 FacesContext.getCurrentInstance().addMessage(null,
                     new FacesMessage(FacesMessage.SEVERITY_WARN, "Advertencia", "No se encontraron datos para la tarjeta: "+tarjetaModel.getTarjetaDatos().getDescRespuesta()));
             }

@@ -1,0 +1,140 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+                          "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+<h:head>
+    <title>Consulta de Movimiento</title>
+</h:head>
+<h:body>
+    <h1>Consulta de Movimiento</h1>
+    <h:form id="consultaForm">
+        <!-- Panel de entrada -->
+        <p:panelGrid columns="2">
+            <h:outputLabel for="numeroCuenta" value="Número de Cuenta:" />
+            <p:inputText id="numeroCuenta" value="#{movimientoController.movimientoModel.numeroCuenta}" />
+
+            <h:outputLabel />
+            <p:commandButton id="consultarButton" value="Consultar"
+                             action="#{movimientoController.consultarMovimiento}"
+                             update=":consultaForm:panelResultado :consultaForm:movimientosTable :consultaForm:growl"
+                             onstart="PF('statusDialog').show();"
+                             oncomplete="PF('statusDialog').hide();" />
+        </p:panelGrid>
+
+        <!-- Panel de resultados -->
+        <p:panelGrid id="panelResultado" columns="2" rendered="true">
+            <h:outputText value="Código Emisor:" />
+            <h:outputText value="#{movimientoController.movimientoModel.entyMoviemiento.codEmisor}" />
+
+            <h:outputText value="Código Usuario:" />
+            <h:outputText value="#{movimientoController.movimientoModel.entyMoviemiento.codUsuario}" />
+
+            <h:outputText value="Número Terminal:" />
+            <h:outputText value="#{movimientoController.movimientoModel.entyMoviemiento.numTerminal}" />
+
+            <h:outputText value="Número Referencia:" />
+            <h:outputText value="#{movimientoController.movimientoModel.entyMoviemiento.numReferencia}" />
+
+            <h:outputText value="Número Tarjeta Monedero:" />
+            <h:outputText value="#{movimientoController.movimientoModel.entyMoviemiento.numTarjetaMonedero}" />
+
+            <h:outputText value="Fecha Expiración:" />
+            <h:outputText value="#{movimientoController.movimientoModel.entyMoviemiento.fechaExpiracion}" />
+
+            <h:outputText value="Comercio:" />
+            <h:outputText value="#{movimientoController.movimientoModel.entyMoviemiento.comercio}" />
+
+            <h:outputText value="Moneda:" />
+            <h:outputText value="#{movimientoController.movimientoModel.entyMoviemiento.moneda}" />
+
+            <h:outputText value="Fecha Txn Terminal:" />
+            <h:outputText value="#{movimientoController.movimientoModel.entyMoviemiento.fechaTxnTerminal}" />
+
+            <h:outputText value="Hora Txn Terminal:" />
+            <h:outputText value="#{movimientoController.movimientoModel.entyMoviemiento.horaTxnTerminal}" />
+
+            <h:outputText value="Reservado:" />
+            <h:outputText value="#{movimientoController.movimientoModel.entyMoviemiento.reservado}" />
+
+            <h:outputText value="ID Transacción:" />
+            <h:outputText value="#{movimientoController.movimientoModel.entyMoviemiento.idTransaccion}" />
+
+            <h:outputText value="Código Respuesta:" />
+            <h:outputText value="#{movimientoController.movimientoModel.entyMoviemiento.codRespuesta}" />
+
+            <h:outputText value="Descripción Respuesta:" />
+            <h:outputText value="#{movimientoController.movimientoModel.entyMoviemiento.descRespuesta}" />
+
+            <h:outputText value="Código Autorización:" />
+            <h:outputText value="#{movimientoController.movimientoModel.entyMoviemiento.codAutorizacion}" />
+
+            <h:outputText value="Moneda Movimiento:" />
+            <h:outputText value="#{movimientoController.movimientoModel.entyMoviemiento.moviMoneda}" />
+
+            <h:outputText value="Código Bloqueo Movimiento:" />
+            <h:outputText value="#{movimientoController.movimientoModel.entyMoviemiento.moviCodBloqueo}" />
+
+            <h:outputText value="Descripción Bloqueo Movimiento:" />
+            <h:outputText value="#{movimientoController.movimientoModel.entyMoviemiento.moviDescBloqueo}" />
+
+            <h:outputText value="Nombre Tarjeta Movimiento:" />
+            <h:outputText value="#{movimientoController.movimientoModel.entyMoviemiento.moviNombreTarjeta}" />
+
+            <h:outputText value="Fecha Expiración Movimiento:" />
+            <h:outputText value="#{movimientoController.movimientoModel.entyMoviemiento.moviFechaExpiracion}" />
+
+            <h:outputText value="Últimos Movimientos:" />
+            <h:outputText value="#{movimientoController.movimientoModel.entyMoviemiento.moviUltMovimientos}" />
+        </p:panelGrid>
+
+ 
+        	<h:commandLink>
+        	hola
+											 <p:dataExporter type="xls" target="movimientosTable"
+												fileName="listaTarjetas" />
+										</h:commandLink>
+        <p:dataTable id="movimientosTable" var="mov"
+                     value="#{movimientoController.movimientoModel.movimientos}" 
+                     rendered="true">
+            <p:column headerText="Fecha Txn">
+                <h:outputText value="#{mov.fechaTxn}">
+                        <f:convertDateTime pattern="dd/MM/yyyy" />
+                 </h:outputText>
+            </p:column>
+            <p:column headerText="Descripción Txn">
+                <h:outputText value="#{mov.descripcionTxn}" />
+            </p:column>
+            <p:column headerText="Moneda Original Txn">
+                <h:outputText value="#{mov.monOriginalTxn}" />
+            </p:column>
+            <p:column headerText="Monto Txn">
+                <h:outputText value="#{mov.montoTxn}" />
+            </p:column>
+            <p:column headerText="Signo Monto Txn">
+                <h:outputText value="#{mov.sigMontoTxn}" />
+            </p:column>
+            <p:column headerText="Operación Txn">
+                <h:outputText value="#{mov.operacionTxn}" />
+            </p:column>
+            <p:column headerText="Código Autorización Txn">
+                <h:outputText value="#{mov.codAutTxn}" />
+            </p:column>
+            <p:column headerText="Número Tarjeta Txn">
+                <h:outputText value="#{mov.numTarjetaTxn}" />
+            </p:column>
+        </p:dataTable>
+
+        <!-- Diálogo de carga y mensajes -->
+        <p:dialog id="statusDialog" widgetVar="statusDialog" modal="true"
+                  closable="false" draggable="false" resizable="false"
+                  showHeader="false" width="200">
+            <p:outputPanel style="text-align:center;">
+                <h:outputText value="Cargando..." style="font-size:16px;" />
+            </p:outputPanel>
+        </p:dialog>
+        <p:growl id="growl" showDetail="true" life="5000" />
+    </h:form>
+</h:body>
+</html>
